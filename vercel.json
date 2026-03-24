@@ -4,7 +4,6 @@
   "installCommand": "pnpm install",
   "framework": "vite",
 
-  },
   "rewrites": [
     { "source": "/api/trpc/:path*", "destination": "/api/trpc/[trpc]" },
     { "source": "/api/oauth/local", "destination": "/api/oauth/local" },
