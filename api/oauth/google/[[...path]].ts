@@ -8,9 +8,7 @@ import { sdk } from "../../../server/_core/sdk";
 const COOKIE_NAME = "app_session_id";
 const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
 
-export const config = {
-  runtime: "nodejs",
-};
+
 
 function isSecureRequest(req: VercelRequest) {
   const forwardedProto = req.headers["x-forwarded-proto"];
