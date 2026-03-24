@@ -1,0 +1,55 @@
+# RHCSA Mastery Platform - Project Status & Roadmap
+
+## 🚀 What is Currently Implemented (DONE)
+1. **Core Platform & Aesthetics**:
+   - Modern, high-end "Split-Pane" Pro Login (Dark/Light mode support).
+   - Premium UI/UX using Tailwind CSS and Lucide icons.
+   - Fully responsive layout (Mobile/Desktop).
+2. **Database & Infrastructure**:
+   - Remote Persistence: **Neon PostgreSQL** serverless DB integration.
+   - ORM: **Drizzle ORM** for type-safe database queries.
+   - Environment: Full `.env` configuration for secrets.
+3. **Authentication System**:
+   - **Multi-provider Login**: Google OAuth, GitHub OAuth, and Local (Email/Pass) Sign up/Sign in.
+   - **Security**: JWT session tokens stored in HttpOnly cookies.
+   - **Test Mode**: Static "Test Admin" bypass for quick development.
+4. **Learning Content (Data Seeded)**:
+   - **12 Chapters**: Fully structured En/Fr data.
+   - **125+ Commands**: Massive database of commands with syntax and examples.
+   - **5 Mock Exams**: Structured exam system with difficulty levels.
+   - **21 Practice Labs**: Initial set of labs categorized by difficulty.
+5. **Interactive Hubs**:
+   - **Troubleshooting Hub**: Interactive search for system issues (Common & Advanced).
+   - **Terminal Sandbox**: Web-based terminal interface for practicing commands.
+   - **Automated Cheatsheets**: Dynamic PDF-ready cheatsheet generation per chapter.
+   - **Multi-language Support**: Full translation framework (English/Français).
+
+---
+
+## 🛠️ What's Missing / Needs Finishing (TODO)
+1. **Content Enrichment (The "Full Mark" Goal)**:
+   - [ ] Refine all 125+ command examples to match exact RHCSA 9 exam output expectations.
+   - [ ] Map all 12 chapters to the official RHEL 9 certification curriculum (specifically SELinux, Stratis, and VDO).
+2. **Lab Realism (Hard Difficulty)**:
+   - [ ] Currently, labs 6-21 are placeholders. Need to write specific "Step-by-Step" instructions for complex labs (LVM, FirewallD, Container Management).
+3. **Downloadable PDF Assets**:
+   - [ ] Implement a real PDF generation service (e.g., using `jspdf` or server-side `puppeteer`) so the "Download Cheatsheet" button produces a professional, printable file.
+4. **Terminal Power**:
+   - [ ] Enhance the Terminal component to suggest commands or provide a "Hint" system for students stuck in labs.
+5. **Exam Grading Logic**:
+   - [ ] Add a detailed "Exam Result Report" showing which areas (Security, Network, Storage) the student needs to improve on.
+
+---
+
+## 📝 PROMPT POUR LE PROCHAIN AGENT (Instructions de Travail)
+"Tu travailles sur un portail d'apprentissage RHCSA. La base technique (Auth, DB Neon, UI) est solide. 
+Ton objectif est d'atteindre le 'Full Mark' (Zéro défaut) :
+1. Examine `server/data.ts` et `COMPLETE_COMMANDS_DATA.json` pour vérifier que chaque commande a un exemple d'output réaliste.
+2. Crée du contenu réel pour les 21 Labs (notamment les 'Hard labs' sur LVM et le stockage).
+3. Assure-toi que le bouton 'Download Cheatsheet' dans `ChapterDetail.tsx` génère un vrai document.
+4. Traduis les parties encore en anglais dans `Troubleshooting.tsx` pour parfaire le bilinguisme."
+
+---
+Developed by: TBINI Mustapha Amin
+Status: Phase 2 Completed (Infrastructure & Pro UI)
+Next Phase: Content Deep-dive & Production Polish.

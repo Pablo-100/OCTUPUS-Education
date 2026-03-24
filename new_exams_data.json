@@ -1,0 +1,499 @@
+[
+  {
+    "fichier": "Copy of white test-22-06-2022.docx",
+    "titre": "White test N°6 - RHCSA 8",
+    "initialisation": {
+      "System1": {
+        "Hostname": "system1.example.com",
+        "IP": "192.168.55.150/24",
+        "Dns": "192.168.5.1",
+        "GW": "192.168.5.1"
+      },
+      "System2": {
+        "Hostname": "system2.example.com",
+        "IP": "192.168.55.151/24",
+        "Dns": "192.168.5.1",
+        "GW": "192.168.5.1"
+      }
+    },
+    "questions": {
+      "System1": [
+        "Reset the root password of the system1 server to « password123 ».",
+        "Create a backup file named « /root/backup.tar.bz2 ». The backup file should contain the content of « /usr/local » and should be zipped with bzip2 compression format.",
+        "Ensure selinux is in enforcing mode. If it is not, change selinux to enforcing mode.",
+        "Upgrade the kernel to, and configure the system to Start with the previous kernel.",
+        "Configure a task : write the message hello to rsyslog every monday at 17h.30.",
+        "Find the files owned by the user student, and copy it to catalog : /opt/dir.",
+        "Write a shell script that finds files located in /etc and whose size is between 2bytes and 10M.",
+        "Find the rows that contain /bin/bash from file /etc/passwd, and write it to the file /tmp/testfile.",
+        "On system2, configure Europe as the time zone.",
+        "Configure system1 to be a ntp client for system2.",
+        "Add user1, user2 and user3. The additional group of the two users : user2, user3 is the admin group. Password : redhat.",
+        "Add admin group and set gid=6000.",
+        "Create a shared directory /home/admins... (characteristics: group owner, SGID, permissions).",
+        "Copy /etc/passwd to /var/tmp/pass. Set permissions: Owner root, group root, no execute for anyone, user1 rw, user2 none (ACLs).",
+        "Open the ip_forward, and take effect permanently.",
+        "Add the service smtp to your firewall configuration.",
+        "Autofs: mount home folder for formateur1 from server2.",
+        "Make balanced profile as your default profile.",
+        "Container logserver: Create from rsyslog image, configure with systemd for user student, auto-start, journal storage, automount /var/log/journal.",
+        "From your container, write the text « hello tekup » to logs."
+      ],
+      "System2": [
+        "Create a 512M partition (/dev/sdb of 2GB), ext4, mounted automatically under /mnt/data1.",
+        "Make a swap partition having 100MB (/dev/sdb). Make automatically usable at system boot time.",
+        "LVM: Create vg (5GB, PE=32M), Lvol1 (1256M, ext4, /mnt/lv1), Lvol2 (10 LE, xfs, /mnt/lvo2).",
+        "Reduce the size of Lvol1 to 500M.",
+        "Extend the size of lvol2 to 620M.",
+        "VDO: Create volume class1_vdo (logical size 30GB) on /dev/sdc, format xfs, mount on /class1_mnt."
+      ]
+    }
+  },
+  {
+    "fichier": "dernier-wt.docx",
+    "titre": "WT-RHCSA",
+    "sections": {
+      "Server": [
+        "Set the root password to tekup.",
+        "Setup IP addr 172.25.2.11, subnet 255.255.255.0, GW 172.25.2.254, DNS 172.25.254.254, hostname serverx.example.com.",
+        "Create lv1 (2G, xfs) on /dev/sdb, mount permanently under /lv1.",
+        "Resize lv1 to 4G.",
+        "Remove lv1.",
+        "Create VDO volume on /dev/sdc (logical size 200G, ext4, mount /vdo).",
+        "Create Stratis fs named fs, pool name is pool on /dev/sdd.",
+        "Create VG vg-wt (50 PE, size 8M) on /dev/sde, create lv1 (30 LE, ext4, mount /mnt/data).",
+        "Create 1G swap on /dev/sde, available after reboot.",
+        "Debug web server on port 82 (rhsa.html).",
+        "Find files owned by student, copy to /opt/dir.",
+        "Shell script: Find files under /home (perm 664, size < 10M), copy to /opt/dir.",
+        "Cronjob for student2: date command to file every 3 minutes (noon to midnight), message 'finished' in logs.",
+        "Set « balanced » as tuned profile."
+      ],
+      "Client": [
+        "Set root password to tekup.",
+        "Open ip_forward permanently.",
+        "Firewall: allow web, ftp, ssh (persistent).",
+        "Backup /usr/local to /root/backup.tar.bz2 (bzip2).",
+        "Transfer backup.tar.bz2 to second machine /home/student.",
+        "SSH key exchange for student account to second machine.",
+        "Copy list of Booleans to /bool file.",
+        "NTP client of second machine.",
+        "Add user1 (Uid=2000, Gid=3000, Home=/tekup/user1, Shell=/bin/sh).",
+        "Create /tic directory (sticky bit, only owner/root can delete).",
+        "Add user2 (pass 'tekup'), sudo without password.",
+        "Configure uid min to 5000.",
+        "Configure default shell to /bin/sh."
+      ]
+    }
+  },
+  {
+    "fichier": "Examen (1).docx",
+    "titre": "Examen Systèmes d’exploitation I : Linux",
+    "metadonnees": {
+      "Enseignant": "Sahar Ben Yaala & Hayet Slimani & Moez Elarfaoui",
+      "Date": "11/03/2020",
+      "Duree": "1h30mn"
+    },
+    "exercices": {
+      "Exercice 1": "QCM: Expressions régulières et commandes shell (digit, killall, chage, notation).",
+      "Exercice 2": "Ordonnancement (PCTER/SRTF, Round Robin, Temps de latence).",
+      "Exercice 3": "Programmation C: Fork et affichage PID/PPID (arbre de processus).",
+      "Exercice 4": "Commandes Linux sur fichier telephone.txt (grep, sed, awk).",
+      "Exercice 5": "Chemins relatifs (cp, mv, touch, rm).",
+      "Exercice 6": "Administration (Users, Groups, Find, Permissions, Sudo)."
+    }
+  },
+  {
+    "fichier": "Exercice-recap.docx",
+    "titre": "Exercice Récapitulatif LVM",
+    "taches": [
+      "Créez deux partitions /dev/sdb1 (1G) et /dev/sdb2 (2G).",
+      "Créez un volume group vg1 (PE=16M).",
+      "Créez lv1 (25 LE, ext4, temp mount /lv1).",
+      "Créez lv2 (500M, xfs, permanent mount /lv2).",
+      "Créez lv3 (300M, swap, permanent).",
+      "Etendre lv2 de 15 LE.",
+      "Réduire lv1 de 100M.",
+      "Etendre lv2 de 2G (extension du VG possible).",
+      "Suppression des LVs et VG."
+    ]
+  },
+  {
+    "fichier": "new-wt-21-06.pdf",
+    "titre": "White test",
+    "questions": [
+      "Set root password to “cetterde”.",
+      "Network config: IP 192.168.4.200, hostname labipa.example.com, etc.",
+      "Set selinux to enforcing.",
+      "Users/Groups min uid/gid 1100.",
+      "Password policy: min 8 chars, 3 categories.",
+      "Create groups redhat (1300), tekup (1345).",
+      "Create users john, alex (specific UIDs, comments, groups).",
+      "John account expires 12-12-2025, min password age 7.",
+      "Directory /home/tekup permissions (SGID, ACLs for john).",
+      "Create 1G swap partition.",
+      "Create 150M ext4 partition at /mnt/ext.",
+      "Create LVM lv0 (200M, xfs) in VG (size 400, PE 4M).",
+      "Extend lv0 to 350M.",
+      "VDO configuration (delete partitions first), mount to /vdo.",
+      "Compress /tmp to tar.gz.",
+      "Find files owned by 'user'.",
+      "List packages starting with 'k'.",
+      "Manipulate services file (sed to replace '.' with ':').",
+      "Diff between files.",
+      "Autofs for ldapuser1.",
+      "NTP sync with 192.168.4.200.",
+      "Container logserver (map /dev/log).",
+      "Container systemd service.",
+      "Write message to logs from container.",
+      "Web server on port 89.",
+      "Access web pages from second machine.",
+      "Tuned profile balanced."
+    ]
+  },
+  {
+    "fichier": "Test Validation RHCSA 9.docx",
+    "titre": "Validation RHCSA V9",
+    "sections": {
+      "Machine Serveur": [
+        "Télécharger httpd, nfs-utils, stratisd.",
+        "Réseau: Hostname tekup, IP 192.168.1.215/24.",
+        "Users/Groups: developers, testers, bob, alice, mary.",
+        "Shared dirs: /home/developers, /home/testers (permissions SGID, sticky bit).",
+        "Password policies for alice/bob.",
+        "Default pass expire 100 days, UID start 1500.",
+        "Find files (alice, size <100M, perms specific).",
+        "User lisa (UID 5000), export home.",
+        "User john (specific config).",
+        "Find lines 'root' in passwd, sed replace ':' with '-'.",
+        "Alias sudo 'res' for root.",
+        "Permissions folders created by bob.",
+        "Password security: length 6, digit, uppercase.",
+        "Copy passwd to /tmp, uppercase content.",
+        "Repo files (BaseOS, AppStream).",
+        "Web server port 90, directory /httpd, curl test.",
+        "Tuned profile powersave.",
+        "SSH root localhost without password.",
+        "Cron job for bob.",
+        "Grub config details.",
+        "Compress /usr/share/doc to xz.",
+        "Timezone Rome, NTP pool."
+      ],
+      "Machine Client": [
+        "DHCP config, user lisa (autofs home from Serveur).",
+        "Stratis: pool datapool, fs datafs, snapshot datasnap, mount snap.",
+        "LVM: myvg (PE 8M), mylv (1G, ext4), extend 500M.",
+        "Container httpd (rootless, user webadmin, port 8080, volume map, systemd)."
+      ]
+    }
+  },
+  {
+    "fichier": "test-rhcsa.pdf",
+    "titre": "White Test RHCSA",
+    "questions": [
+      "Set root password to “cetterde”.",
+      "Network config: IP 192.168.4.110, hostname rhcsa.example.com.",
+      "Users/Groups min uid 1100 max 1900.",
+      "Password policy: min 8 chars, 1 digit, 1 special.",
+      "Create groups redhat (1300), tekup (1345).",
+      "Create users user1, user2, user3 (attributes).",
+      "User2 password aging (expire 30 days, warn 7...).",
+      "Make user2 password expire.",
+      "Directory /home/tekup permissions.",
+      "User1 permissions on directory.",
+      "Create 1G swap partition.",
+      "Create 15M ext4 partition.",
+      "Create LVM lv0 (200M, xfs) in VG (PE 4M).",
+      "Find files owned by 'user'.",
+      "Grep 'bash' from passwd to users file.",
+      "Create file 'start' with process pid 10.",
+      "Create file 'kernelfiles' from package kernel.",
+      "Replace '/' with '#' in file."
+    ]
+  },
+  {
+    "fichier": "white_test.docx.pdf",
+    "titre": "White test RHCSA (Server1/Server2)",
+    "questions": {
+      "Server1": [
+        "Reset root password.",
+        "Yum sources (BaseOS, AppStream).",
+        "Network config (IP 172.24.40.40).",
+        "Web Debug: Port 8086, file exam.html.",
+        "Users/Groups: managers, natasha, harry, sara.",
+        "Cron: natasha (logs), root (rm /tmp at specific date).",
+        "Shared dir /home/managers.",
+        "Autofs: remoteuser1 home mount.",
+        "Permissions: /var/tmp/fstab (ACLs).",
+        "NTP: sync with server2, Timezone Africa/Tunis.",
+        "Users: manel, jaques (find files).",
+        "Compression: /usr to back.tgz.",
+        "Container: pdfconvertor (rootless, volumes).",
+        "Tuned profile recommended."
+      ],
+      "Server2": [
+        "Crack root password.",
+        "LVM: vgprac (PE 8M), lvprac (500M, xfs).",
+        "Extend lvprac.",
+        "LV lvprac2 (300M, vfat).",
+        "LV lvprac3 (350M, swap).",
+        "Stratis: pool1, fs1, snapshot snap1."
+      ]
+    }
+  },
+  {
+    "fichier": "White-test.pdf",
+    "titre": "White test1-V8",
+    "questions": [
+      "Set root password to “azerty”.",
+      "Network config: IP 192.168.4.210, hostname rhcsa.example.com.",
+      "Add second IP 10.0.0.10/24.",
+      "SELinux enforcing.",
+      "Create groups redhat, tekup.",
+      "Create users admin1, admin2, admin3.",
+      "Password aging for admin2, inactive for admin3.",
+      "Shared dir /home/tekup.",
+      "Permissions: admin1 no access, admin1 read/change on /tmp/passwd.",
+      "Cron: compress /tmp (Tue/Fri 7:15am).",
+      "Find files owned by 'user'.",
+      "Manipulate /etc/shadow (grep '!!', sed replace).",
+      "File 'start' with system targets.",
+      "File 'version' with kernel version.",
+      "File 'sp' with packages starting with 's'.",
+      "Sed replace '.' with ':'.",
+      "Stratis: vol1, snapshot snap-1.",
+      "VDO: 3TiB virtual size.",
+      "Swap 1Gb.",
+      "Partition 300M ext4.",
+      "LVM lv0 (200M xfs).",
+      "Repos AppStream/BaseOS.",
+      "Firewall ftp.",
+      "Virtual hosts (account/sales) + /etc/hosts lines.",
+      "SELinux off (temp).",
+      "Verify servers, NTP sync."
+    ]
+  },
+  {
+    "fichier": "WT2.pdf",
+    "titre": "White test (Correction/Answer Key)",
+    "remarque": "Ce document contient les questions suivies des commandes de correction.",
+    "contenu": [
+      "Root password reset (rd.break commands).",
+      "Network config (nmcli commands).",
+      "SELinux enforcing (config file).",
+      "Create groups redhat, tekup.",
+      "Create users foulen1, foulen2, foulen3 (attributes).",
+      "Password aging (chage commands).",
+      "Directory /home/tekup (permissions SGID).",
+      "ACLs on /tmp/passwd.",
+      "Swap partition (fdisk, mkswap).",
+      "XFS partition.",
+      "LVM lv0 (20 extents).",
+      "Compress /tmp.",
+      "Find files owned by user.",
+      "Shadow manipulation.",
+      "System targets file.",
+      "Kernel version file.",
+      "Packages starting with 's'.",
+      "Repo setup.",
+      "LDAP & Autofs config.",
+      "NTP sync."
+    ]
+  },
+  {
+    "fichier": "WT3.pdf",
+    "titre": "White test",
+    "questions": [
+      "Set the root password to “cetterde”.",
+      "Set the network configuration (IP, Subnet, Gateway, DNS, Hostname).",
+      "Set selinux policy to enforcing.",
+      "Configure users and groups to have a minimum uid and gid of 1100.",
+      "Set the password policy: minimum 8 characters length, 3 categories.",
+      "Create groups redhat and tekup with respective gid 1300 and 1345.",
+      "Create users john and alex with specific attributes (UIDs, comments, groups).",
+      "Configure john's password to expire by 2021, minimum age 7. Expire alex's password.",
+      "Create directory “/home/tekup” with specific group permissions and ownership.",
+      "Files created in tekup have a maximum of 400 as permissions.",
+      "Create a 1G swap partition automounted by system boot.",
+      "Create a 150M ext4 partition automounted at “/mnt/ext”.",
+      "Create an lvm called lv0 (200M) under a VG (PE 4M, total 400), formatted xfs, mounted at “/mnt/lv0”.",
+      "Compress /tmp under “/home/tekup/tmp.tar.gz”.",
+      "Extend lv0 to 350M.",
+      "Copy all files owned by “user” under “/opt/dir”.",
+      "Create a file containing all packages installed that starts with ‘k’.",
+      "Save the system services under a file called services.",
+      "Change every ‘.’ in services with ‘:’ and save to services_changed.",
+      "Save the difference between services and services_changed.",
+      "Setup a new repository to download packages locally from ‘/var/ftp/repo’.",
+      "Configure the system to use ldap configuration via server labipa.example.com with tls.",
+      "Configure autofs for ldapuser1 home folder mount.",
+      "Set the system to sync time with server 192.168.4.200."
+    ]
+  },
+  {
+    "fichier": "wt3-Aout.docx",
+    "titre": "WT-3 ; Aout 2022",
+    "sections": {
+      "Server1": [
+        "Create the user named eric with no interactive shell. His home is /base/eric.",
+        "Set cronjob for user guillaume to execute /bin/echo ‘hi’ at 14:23.",
+        "Create a 2G swap partition which take effect automatically at boot-start.",
+        "Create a logical volume named vo (size= 300M, LE=4M). Use ext4 and /vo as mount point.",
+        "Extend vo so that the new size will be between 319M and 323M.",
+        "Create a backup file named /root/backup.tar.bz2 of /usr/local using bzip2.",
+        "Create a new logical volume 'database' (50 extents, PE=16MB) in 'datastore' VG, ext3, mounted under /mnt/database.",
+        "Create a shared directory /home/admins (group adminuser, SGID, read/write for group).",
+        "Resize Logical Volume lv1 from 100MB to 500MB without losing data.",
+        "Create a user named alex (uid 1234, password alex111). Files created should have permissions rw- - - - r - -.",
+        "Enable the boolean container_manage_cgroup permanently.",
+        "Add 3 new users alice, bob, charles to group marketing. Configure directory /marketing permissions.",
+        "Set the system time zone and configure NTP.",
+        "Configure password aging for charles (expire in 60 days).",
+        "Lock bobs account.",
+        "Find all setuid files and save to /testresults/setuid.list.",
+        "Create a periodic job as alice (every 5 mins, Sun/Wed, 3am-4am).",
+        "Set the system SELinux mode to permissive.",
+        "Create a firewall rule to drop all traffic from 10.10.10.0.",
+        "Enable SSH passwordless connection for dev user between server1 and server2."
+      ],
+      "Server 2": [
+        "Set the umask so that new files are only readable and writeable by the owner.",
+        "Create three users (Derek, Tom, Kenny) in instructors group. Modify Tom (no shell, expire 10 days).",
+        "Download and configure apache to serve index.html from /var/web on port 94.",
+        "Find all log messages containing \"ACPI\" in /var/log/messages, export to file, archive /var/log.",
+        "Modify the GRUB timeout to 1 second.",
+        "Create a daily cron job at 4:27PM for Derek.",
+        "Configure time.nist.gov as the only NTP Server.",
+        "Create an 800M swap partition.",
+        "Create a new logical volume (LV-A) with 30 extents (PE=32M), mount on /mnt.",
+        "Create a container logserver from rsyslog image.",
+        "Configure the container with systemd services by user “derek” (auto-start).",
+        "Configure host journal to store all journal across reboot.",
+        "Copy *.journal files to /home/derek/container_logs.",
+        "Configure automount /var/log/journal from container.",
+        "Configure YUM Repos (BaseOS and AppStream).",
+        "Configure network (Static IP 10.10.1.10, hostname server2).",
+        "Set the recommended profile as tuned profile."
+      ]
+    }
+  },
+  {
+    "fichier": "wt4-aout.docx",
+    "titre": "WT4-Aout 2022",
+    "sections": {
+      "Partie A: clientnode.example.com": [
+        "Set multi-user target as your default target.",
+        "Change your target to graphical target for this session.",
+        "Configure Host Name, IP, Gateway, DNS (hostname: clientnode.example.com).",
+        "Create directory /home/teachers (group teacher, rwx for group, no access for others, SGID).",
+        "Find rows containing « strat » from /usr/share/dict/words to /tmp/testfile.",
+        "Create a user bob with shell /bin/sh.",
+        "Create a user tom with home /redhat/tom.",
+        "Rename user bob to maninder and change UID to 5460.",
+        "Set Expire Date 2030-06-15 for user maninder.",
+        "Create a group pgroup with GID 3000.",
+        "Modify tom password to expire after 20 days.",
+        "Configure all users passwords expire after 500 days.",
+        "Configure password complexity (at least one capital letter, two digits).",
+        "Create user leonel (uid 6003) on two machines. Mount home via autofs.",
+        "Configure repos BaseOS and AppStream.",
+        "Add servernode.example.com to /etc/hosts.",
+        "Configure NTP client (server: servernode.example.com).",
+        "Configure httpd to run on port 82."
+      ],
+      "Partie B: servernode.example.com": [
+        "Reset root Password to redhat.",
+        "Configure Selinux to enforcing mode.",
+        "Configure Host Name, IP, Gateway, DNS (hostname: servernode.example.com).",
+        "Create Directory /home/manager (group manager, full perm for root/group, SGID).",
+        "Create user gabriel (uid 4223, password redhat). Configure default file/dir permissions.",
+        "Locate files of owner 'gabriel' and copy to /root/result.",
+        "Find all files of root with setuid and copy to /root/output. Compress with bzip2.",
+        "List lines with string « ip » from /usr/share/dict/words to /root/found.",
+        "Add a 512MB swap partition permanently.",
+        "Create Logical Volume 'lv' (5 PEs, PE=32MB, ext4) mounted on /mnt/lv. Resize between 225M-275M.",
+        "Create Logical Volume 'vol' (100 PEs, PE=8MB, vfat) mounted on /vol.",
+        "Create VDO partition 'thin' (logical size 50GB, xfs) on unpartitioned disk. Mount on /thin.",
+        "Set recommended tuned profile.",
+        "Create user thomas. Connect to registry.redhat.com.",
+        "Configure host journal storage. Create container logserver (rsyslog) with automount.",
+        "Configure container as systemd service for user 'thomas'."
+      ]
+    }
+  },
+  {
+    "fichier": "wt-5-aout.docx",
+    "titre": "WT-RHCA",
+    "sections": {
+      "Networking": [
+        "Configure Machine 1 (client.example.com) and Machine 2 (server.example.com) network settings."
+      ],
+      "Machine 1": [
+        "Set multi-user target as default and reboot.",
+        "Find lines containing 'seismic' in /usr/share/dict/words, save to /root/wordlist.",
+        "Create user David with password aging.",
+        "Create groups linuxadm (GID 5000), dba. Add David to linuxadm. Change linuxadm to sysadm (GID 6000).",
+        "Create directory /archive. Create file 'targets' inside.",
+        "Create user melinda with specific UID/GID. Set default permissions for files/dirs.",
+        "Copy /archive to /root/archive2 with specific permissions/ACLs.",
+        "Copy services list to /root/services. Set specific permissions.",
+        "Configure Yum repos (AppStream, BaseOS).",
+        "Create backup /root/backup.tar.bz2 of /usr/local.",
+        "Mount /data from machine2 via NFS/automount.",
+        "Create container logserver (rsyslog) as user10 with systemd and journal automount.",
+        "Configure http web server on port 87.",
+        "Script to find files owned by user10 (size 10K-10M).",
+        "Activate boolean « use_nfs_home_dirs » permanently.",
+        "Configure NTP client for server.example.com."
+      ],
+      "Machine 2": [
+        "Configure password policy (digits, upper/lower, min 7).",
+        "Write script backup.sh to find/copy files < 2M.",
+        "Script to backup /etc nightly via cron (11PM, except Sunday).",
+        "Create 2G swap partition.",
+        "LVM: Create vgfs (PE 16MB), ext4vol and xfsvol (80MB each). Mount persistently. Extend xfsvol.",
+        "NFS Server: Create user user30 (UID 3000). Share /home. Configure autofs on Machine 1 for user30.",
+        "Create VDO volume vdo1 (logical 16GB, xfs) on sdc. Mount /xfsvdo1.",
+        "Set time zone and NTP.",
+        "Create periodic job for user (date to file). Remove bob's cron access.",
+        "Submit job as user100 for specific date.",
+        "Set recommended tuned profile."
+      ]
+    }
+  },
+  {
+    "fichier": "wt6.docx",
+    "titre": "WT-6",
+    "sections": {
+      "Part 1": [
+        "Add group sysadmin. Add users Natasha, Jane (secondary sysadmin), Eric (no shell). Set passwords.",
+        "Create collaborative directory /redhat/cms (group sysadmin, SGID).",
+        "Copy /etc/fstab to /var/tmp. Configure ACLs (root owner, user permissions).",
+        "Password policy: expire 30 days, min one uppercase.",
+        "Create user alex (password delay, sudo without password).",
+        "Create group tekup (sudo without password).",
+        "Natasha cronjob: daily 14:23 echo ciao.",
+        "Configure NTP client of host2.",
+        "Create 500MB swap partition.",
+        "Create user necola (uid 1212).",
+        "Locate files of user jacob, copy to /root/findfiles.",
+        "Find lines with localhost in /etc/hosts, copy to /root/list.",
+        "Create LVM (VG vol0 510MB, LV lv0 80MB, xfs, mount /cms).",
+        "Create LVM Lvi (60 extents, PE 16MB, ext3, mount /record).",
+        "Configure Network (host1)."
+      ],
+      "Part 2": [
+        "Create user mark on both machines (uid 6003). Configure autofs home mount.",
+        "Create user mano with default permissions.",
+        "Create group testers (sudo without password).",
+        "Create backup /root/backup.tar.bz2 of /usr/local.",
+        "Reset root password to tekup.",
+        "Create user shangrilla. Configure journal storage. Copy journal files.",
+        "Create container service (rsyslog) with automount.",
+        "Configure HTTP server on port 83 (exemple.html).",
+        "Configure Network (host2).",
+        "Create VDO volume class1_vdo (logical 30GB, xfs) on /dev/sdc. Mount /class1_mnt."
+      ]
+    }
+  }
+]

@@ -1,0 +1,303 @@
+{
+  "app": {
+    "title": "OCTUPUS Education",
+    "subtitle": "Complete RHCSA Learning Platform",
+    "developer": "Developed by: TBINI Mustapha Amin - OCTUPUS"
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "chapters": "Chapters",
+    "commands": "Commands",
+    "terminal": "Terminal",
+    "labs": "Labs",
+    "exams": "Exams",
+    "troubleshooting": "Troubleshooting",
+    "certificates": "Certificates",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "common": {
+    "search": "Search",
+    "filter": "Filter",
+    "difficulty": "Difficulty",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "duration": "Duration",
+    "minutes": "minutes",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "download": "Download",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "start": "Start",
+    "continue": "Continue",
+    "completed": "Completed",
+    "pending": "Pending"
+  },
+  "chapters": {
+    "title": "RHCSA Chapters",
+    "description": "Master all 12 chapters of the RHCSA certification",
+    "chapter1": {
+      "title": "System Administration Fundamentals",
+      "description": "Learn the basics of Linux system administration"
+    },
+    "chapter2": {
+      "title": "User and Group Management",
+      "description": "Create and manage users and groups on Linux systems"
+    },
+    "chapter3": {
+      "title": "File Systems and Storage",
+      "description": "Understand partitioning, LVM, and file system management"
+    },
+    "chapter4": {
+      "title": "Boot Process and Bootloader",
+      "description": "Master GRUB configuration and boot process"
+    },
+    "chapter5": {
+      "title": "Networking Configuration",
+      "description": "Configure network interfaces and troubleshoot connectivity"
+    },
+    "chapter6": {
+      "title": "SELinux (Security Enhanced Linux)",
+      "description": "Understand and manage SELinux policies and contexts"
+    },
+    "chapter7": {
+      "title": "System Services and Daemons",
+      "description": "Manage systemd services and create custom services"
+    },
+    "chapter8": {
+      "title": "Package Management",
+      "description": "Master YUM/DNF package management"
+    },
+    "chapter9": {
+      "title": "System Performance and Monitoring",
+      "description": "Monitor and optimize system performance"
+    },
+    "chapter10": {
+      "title": "Logging and Log Analysis",
+      "description": "Configure logging and analyze system logs"
+    },
+    "chapter11": {
+      "title": "Bash Scripting and Automation",
+      "description": "Write shell scripts and automate system tasks"
+    },
+    "chapter12": {
+      "title": "Advanced Topics and Troubleshooting",
+      "description": "Advanced system recovery and troubleshooting techniques"
+    }
+  },
+  "commands": {
+    "title": "Linux Commands Database",
+    "description": "125+ essential Linux commands with examples and output",
+    "search_placeholder": "Search commands...",
+    "syntax": "Syntax",
+    "options": "Options",
+    "examples": "Examples",
+    "output": "Output",
+    "related": "Related Commands",
+    "copy": "Copy",
+    "copied": "Copied to clipboard!"
+  },
+  "terminal": {
+    "title": "Interactive Terminal",
+    "description": "Simulate and test Linux commands",
+    "input_placeholder": "Enter command...",
+    "execute": "Execute",
+    "clear": "Clear",
+    "history": "History",
+    "help": "Help"
+  },
+  "labs": {
+    "title": "Practice Labs",
+    "description": "18 progressive labs from easy to hard",
+    "objectives": "Objectives",
+    "prerequisites": "Prerequisites",
+    "instructions": "Instructions",
+    "validation": "Validation",
+    "solution": "Solution",
+    "submit": "Submit Lab",
+    "submitted": "Lab submitted successfully!",
+    "completed": "Lab completed!"
+  },
+  "exams": {
+    "title": "Exam Simulations",
+    "description": "5 complete RHCSA exam simulations",
+    "time_limit": "Time Limit",
+    "questions": "Questions",
+    "passing_score": "Passing Score",
+    "start_exam": "Start Exam",
+    "question": "Question",
+    "of": "of",
+    "time_remaining": "Time Remaining",
+    "finish_exam": "Finish Exam",
+    "results": "Results",
+    "score": "Score",
+    "correct": "Correct Answers",
+    "incorrect": "Incorrect Answers",
+    "passed": "Passed",
+    "failed": "Failed",
+    "explanation": "Explanation",
+    "review": "Review Answers"
+  },
+  "troubleshooting": {
+    "title": "Troubleshooting Hub",
+    "description": "Detailed troubleshooting scenarios and solutions",
+    "symptoms": "Symptoms",
+    "diagnostics": "Diagnostics",
+    "solution": "Solution",
+    "ai_assistant": "OCTUPUS IA",
+    "ask_question": "Ask a question...",
+    "get_help": "Get Help"
+  },
+  "certificates": {
+    "title": "Your Certificates",
+    "description": "Download your completion certificates",
+    "issued": "Issued",
+    "expires": "Expires",
+    "download": "Download Certificate",
+    "no_certificates": "No certificates yet. Complete exams to earn certificates!"
+  },
+  "profile": {
+    "title": "My Profile",
+    "track_progress": "Track your progress and achievements",
+    "progress": "Progress",
+    "chapters_completed": "Chapters Completed",
+    "labs_completed": "Labs Completed",
+    "exams_passed": "Exams Passed",
+    "total_score": "Total Score",
+    "achievements": "Achievements",
+    "statistics": "Statistics",
+    "chapters": "Chapters",
+    "labs": "Labs",
+    "exams": "Exams",
+    "score": "Score",
+    "day_streak": "Day Streak",
+    "average_score": "Average Score",
+    "average_performance": "Average performance",
+    "tabs": {
+      "progress": "Progress",
+      "activity": "Activity",
+      "certificates": "Certificates",
+      "settings": "Settings"
+    },
+    "chapter_progress": {
+      "title": "Chapter Progress",
+      "subtitle": "Your progress across all chapters",
+      "system_administration": "System Administration",
+      "user_management": "User Management",
+      "file_systems": "File Systems",
+      "networking": "Networking",
+      "security_selinux": "Security & SELinux",
+      "services_processes": "Services & Processes"
+    },
+    "recent_activity": {
+      "title": "Recent Activity",
+      "subtitle": "Your recent learning activities"
+    },
+    "certificates": {
+      "title": "Certificates & Achievements",
+      "subtitle": "Your earned certificates and achievements",
+      "completed_on": "Completed on",
+      "no_certificates": "No certificates yet",
+      "no_certificates_hint": "Complete chapters and exams to earn certificates"
+    },
+    "settings": {
+      "title": "Account Settings",
+      "email_notifications_title": "Email Notifications",
+      "email_notifications_desc": "Receive email updates on your progress and achievements",
+      "enable_notifications": "Enable notifications",
+      "learning_reminders_title": "Learning Reminders",
+      "learning_reminders_desc": "Get daily reminders to continue your learning",
+      "enable_reminders": "Enable reminders"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
+    "notifications": "Notifications",
+    "email_notifications": "Email Notifications",
+    "chapter_completion": "Chapter Completion",
+    "exam_results": "Exam Results",
+    "lab_unlock": "Lab Unlock",
+    "save_settings": "Save Settings"
+  },
+  "footer": {
+    "developer": "Developed by: TBINI Mustapha Amin - OCTUPUS",
+    "copyright": "© 2026 OCTUPUS Education. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero_title": "Master the RHCSA Certification",
+    "hero_subtitle": "Complete guide with 12 chapters, 125+ commands, interactive terminal, labs, and full exam simulations to help you ace the Red Hat Certified System Administrator exam.",
+    "start_learning": "Start Learning",
+    "take_practice_exam": "Take Practice Exam",
+    "get_started": "Get Started",
+    "learn_more": "Learn More",
+    "features_title": "Everything You Need to Succeed",
+    "features_subtitle": "Comprehensive learning platform designed for RHCSA certification",
+    "cta_title": "Ready to Start Your Journey?",
+    "cta_subtitle": "Begin with Chapter 1 and progress through comprehensive lessons, hands-on labs, and practice exams.",
+    "start_chapter_1": "Start Chapter 1",
+    "next_steps": {
+      "title": "Your Next Steps",
+      "subtitle": "Stay focused and keep momentum,",
+      "overall": "overall progress",
+      "today_plan": "Today Learning Plan",
+      "chapters": "Chapters",
+      "labs": "Labs",
+      "exams": "Exams",
+      "continue_chapters": "Continue Chapters",
+      "go_labs": "Go to Labs",
+      "go_exams": "Start Exam Practice",
+      "open_profile": "Open Profile"
+    },
+    "roadmap": {
+      "easy": "Easy Phase",
+      "easy_desc": "Complete chapter fundamentals and build command confidence.",
+      "medium": "Medium Phase",
+      "medium_desc": "Increase hands-on labs and troubleshooting speed.",
+      "hard": "Hard Phase",
+      "hard_desc": "Run exam simulations under pressure and close weak points.",
+      "done": "Done",
+      "in_progress": "In progress"
+    },
+    "stats": {
+      "chapters": "Chapters",
+      "commands": "Commands",
+      "labs": "Labs",
+      "exams": "Exams"
+    },
+    "features": {
+      "chapters_title": "12 Comprehensive Chapters",
+      "chapters_desc": "Master all topics covered in the RHCSA certification exam",
+      "commands_title": "125+ Linux Commands",
+      "commands_desc": "Learn essential commands with real-world examples and output",
+      "terminal_title": "Interactive Terminal",
+      "terminal_desc": "Practice commands in a safe, simulated Linux environment",
+      "labs_title": "18 Progressive Labs",
+      "labs_desc": "Hands-on exercises from beginner to advanced levels",
+      "exams_title": "5 Full Exam Simulations",
+      "exams_desc": "Complete practice exams with automatic grading and detailed feedback",
+      "certificates_title": "Certificates & Tracking",
+      "certificates_desc": "Track your progress and earn certificates upon completion"
+    }
+  }
+}

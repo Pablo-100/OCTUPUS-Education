@@ -1,0 +1,1406 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "number": 1,
+      "titleEn": "System Administration Fundamentals",
+      "titleFr": "Fondamentaux de l'Administration Système",
+      "descriptionEn": "Learn the basics of Linux system administration including user management, file permissions, and basic system operations",
+      "descriptionFr": "Apprenez les bases de l'administration système Linux incluant la gestion des utilisateurs, les permissions de fichiers et les opérations système de base",
+      "contentEn": "This chapter covers the fundamental concepts of Linux system administration. You will learn how to navigate the file system, manage users and groups, understand file permissions, and perform basic system operations. These skills are essential for any system administrator.",
+      "contentFr": "Ce chapitre couvre les concepts fondamentaux de l'administration système Linux. Vous apprendrez à naviguer dans le système de fichiers, gérer les utilisateurs et groupes, comprendre les permissions de fichiers et effectuer les opérations système de base. Ces compétences sont essentielles pour tout administrateur système."
+    },
+    {
+      "id": 2,
+      "number": 2,
+      "titleEn": "User and Group Management",
+      "titleFr": "Gestion des Utilisateurs et Groupes",
+      "descriptionEn": "Master user and group creation, modification, and deletion with advanced permission management",
+      "descriptionFr": "Maîtrisez la création, modification et suppression d'utilisateurs et de groupes avec la gestion avancée des permissions",
+      "contentEn": "This chapter focuses on managing users and groups on Linux systems. You will learn how to create and delete users, manage group membership, set user passwords, and configure sudo access. Understanding user management is critical for system security.",
+      "contentFr": "Ce chapitre se concentre sur la gestion des utilisateurs et des groupes sur les systèmes Linux. Vous apprendrez à créer et supprimer des utilisateurs, gérer l'appartenance aux groupes, définir les mots de passe des utilisateurs et configurer l'accès sudo. La compréhension de la gestion des utilisateurs est essentielle pour la sécurité du système."
+    },
+    {
+      "id": 3,
+      "number": 3,
+      "titleEn": "File Systems and Storage",
+      "titleFr": "Systèmes de Fichiers et Stockage",
+      "descriptionEn": "Understand partitioning, LVM, file systems, and storage management",
+      "descriptionFr": "Comprenez le partitionnement, LVM, les systèmes de fichiers et la gestion du stockage",
+      "contentEn": "This chapter covers file system management and storage administration. You will learn about disk partitioning, file system creation and mounting, LVM (Logical Volume Management), and storage optimization techniques.",
+      "contentFr": "Ce chapitre couvre la gestion des systèmes de fichiers et l'administration du stockage. Vous apprendrez le partitionnement des disques, la création et le montage des systèmes de fichiers, LVM (Gestion des Volumes Logiques) et les techniques d'optimisation du stockage."
+    },
+    {
+      "id": 4,
+      "number": 4,
+      "titleEn": "File Permissions and Ownership",
+      "titleFr": "Permissions et Propriété des Fichiers",
+      "descriptionEn": "Master file permissions, ownership, and special permissions (SUID, SGID, Sticky Bit)",
+      "descriptionFr": "Maîtrisez les permissions de fichiers, la propriété et les permissions spéciales (SUID, SGID, Sticky Bit)",
+      "contentEn": "This chapter explains how to manage file permissions and ownership. You will learn about read, write, and execute permissions, how to change ownership with chown and chgrp, and how to use special permissions for advanced security configurations.",
+      "contentFr": "Ce chapitre explique comment gérer les permissions et la propriété des fichiers. Vous apprendrez les permissions de lecture, écriture et exécution, comment modifier la propriété avec chown et chgrp, et comment utiliser les permissions spéciales pour les configurations de sécurité avancées."
+    },
+    {
+      "id": 5,
+      "number": 5,
+      "titleEn": "SELinux and Security",
+      "titleFr": "SELinux et Sécurité",
+      "descriptionEn": "Understand SELinux contexts, policies, and security enforcement",
+      "descriptionFr": "Comprenez les contextes SELinux, les politiques et l'application de la sécurité",
+      "contentEn": "This chapter covers SELinux (Security-Enhanced Linux) which provides mandatory access control. You will learn about SELinux contexts, how to manage policies, and how to troubleshoot SELinux issues.",
+      "contentFr": "Ce chapitre couvre SELinux (Linux amélioré par la sécurité) qui fournit le contrôle d'accès obligatoire. Vous apprendrez les contextes SELinux, comment gérer les politiques et comment dépanner les problèmes SELinux."
+    },
+    {
+      "id": 6,
+      "number": 6,
+      "titleEn": "Networking and Network Configuration",
+      "titleFr": "Réseau et Configuration Réseau",
+      "descriptionEn": "Configure network interfaces, manage DNS, and troubleshoot network connectivity",
+      "descriptionFr": "Configurez les interfaces réseau, gérez DNS et dépannez la connectivité réseau",
+      "contentEn": "This chapter covers network configuration on Red Hat systems. You will learn how to configure network interfaces, manage DNS settings, configure routing, and troubleshoot network issues.",
+      "contentFr": "Ce chapitre couvre la configuration réseau sur les systèmes Red Hat. Vous apprendrez à configurer les interfaces réseau, gérer les paramètres DNS, configurer le routage et dépanner les problèmes réseau."
+    },
+    {
+      "id": 7,
+      "number": 7,
+      "titleEn": "Package Management and Software",
+      "titleFr": "Gestion des Paquets et Logiciels",
+      "descriptionEn": "Manage software packages using yum/dnf and understand software repositories",
+      "descriptionFr": "Gérez les paquets logiciels en utilisant yum/dnf et comprenez les référentiels de logiciels",
+      "contentEn": "This chapter covers package management on Red Hat systems. You will learn how to use yum and dnf to install, update, and remove packages, manage repositories, and handle package dependencies.",
+      "contentFr": "Ce chapitre couvre la gestion des paquets sur les systèmes Red Hat. Vous apprendrez à utiliser yum et dnf pour installer, mettre à jour et supprimer des paquets, gérer les référentiels et gérer les dépendances des paquets."
+    },
+    {
+      "id": 8,
+      "number": 8,
+      "titleEn": "Services and Processes",
+      "titleFr": "Services et Processus",
+      "descriptionEn": "Manage services with systemd, monitor processes, and handle process management",
+      "descriptionFr": "Gérez les services avec systemd, surveillez les processus et gérez les processus",
+      "contentEn": "This chapter covers service and process management. You will learn how to use systemd to manage services, monitor running processes, manage process priorities, and handle background jobs.",
+      "contentFr": "Ce chapitre couvre la gestion des services et des processus. Vous apprendrez à utiliser systemd pour gérer les services, surveiller les processus en cours d'exécution, gérer les priorités des processus et gérer les tâches en arrière-plan."
+    },
+    {
+      "id": 9,
+      "number": 9,
+      "titleEn": "System Logging and Monitoring",
+      "titleFr": "Journalisation et Surveillance du Système",
+      "descriptionEn": "Configure logging with rsyslog and journald, monitor system performance",
+      "descriptionFr": "Configurez la journalisation avec rsyslog et journald, surveillez les performances du système",
+      "contentEn": "This chapter covers system logging and monitoring. You will learn how to configure rsyslog and journald for centralized logging, monitor system performance with tools like top and iostat, and analyze logs for troubleshooting.",
+      "contentFr": "Ce chapitre couvre la journalisation et la surveillance du système. Vous apprendrez à configurer rsyslog et journald pour la journalisation centralisée, surveiller les performances du système avec des outils comme top et iostat, et analyser les journaux pour le dépannage."
+    },
+    {
+      "id": 10,
+      "number": 10,
+      "titleEn": "Firewall and Network Security",
+      "titleFr": "Pare-feu et Sécurité Réseau",
+      "descriptionEn": "Configure firewall rules with firewalld, manage ports and services",
+      "descriptionFr": "Configurez les règles de pare-feu avec firewalld, gérez les ports et les services",
+      "contentEn": "This chapter covers firewall configuration and network security. You will learn how to use firewalld to manage firewall rules, open and close ports, and configure zone-based firewall policies.",
+      "contentFr": "Ce chapitre couvre la configuration du pare-feu et la sécurité réseau. Vous apprendrez à utiliser firewalld pour gérer les règles de pare-feu, ouvrir et fermer les ports, et configurer les politiques de pare-feu basées sur les zones."
+    },
+    {
+      "id": 11,
+      "number": 11,
+      "titleEn": "Boot Process and Kernel Management",
+      "titleFr": "Processus de Démarrage et Gestion du Noyau",
+      "descriptionEn": "Understand the boot process, manage GRUB, and handle kernel updates",
+      "descriptionFr": "Comprenez le processus de démarrage, gérez GRUB et gérez les mises à jour du noyau",
+      "contentEn": "This chapter covers the Linux boot process and kernel management. You will learn about the boot sequence, GRUB configuration, kernel parameters, and how to manage kernel updates.",
+      "contentFr": "Ce chapitre couvre le processus de démarrage Linux et la gestion du noyau. Vous apprendrez la séquence de démarrage, la configuration de GRUB, les paramètres du noyau et comment gérer les mises à jour du noyau."
+    },
+    {
+      "id": 12,
+      "number": 12,
+      "titleEn": "Troubleshooting and System Recovery",
+      "titleFr": "Dépannage et Récupération du Système",
+      "descriptionEn": "Troubleshoot common issues and recover from system failures",
+      "descriptionFr": "Dépannez les problèmes courants et récupérez des défaillances du système",
+      "contentEn": "This chapter covers troubleshooting methodologies and system recovery techniques. You will learn how to diagnose system problems, recover from boot failures, and use rescue mode for system recovery.",
+      "contentFr": "Ce chapitre couvre les méthodologies de dépannage et les techniques de récupération du système. Vous apprendrez à diagnostiquer les problèmes du système, récupérer des défaillances de démarrage et utiliser le mode de récupération pour la récupération du système."
+    }
+  ],
+  "commands": [
+    {
+      "name": "ls",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "ls [options] [directory]",
+      "description": "List directory contents",
+      "options": "-l (long format), -a (all files), -h (human readable), -R (recursive), -S (sort by size)"
+    },
+    {
+      "name": "cd",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "cd [directory]",
+      "description": "Change directory",
+      "options": "~ (home), .. (parent), - (previous)"
+    },
+    {
+      "name": "pwd",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "pwd",
+      "description": "Print working directory",
+      "options": "-L (logical), -P (physical)"
+    },
+    {
+      "name": "mkdir",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "mkdir [options] directory",
+      "description": "Create directories",
+      "options": "-p (parents), -m (mode)"
+    },
+    {
+      "name": "touch",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "touch [options] file",
+      "description": "Create empty file or update timestamp",
+      "options": "-a (access time), -m (modify time), -t (specific time)"
+    },
+    {
+      "name": "rm",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "rm [options] file",
+      "description": "Remove files",
+      "options": "-r (recursive), -f (force), -i (interactive)"
+    },
+    {
+      "name": "rmdir",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "rmdir [options] directory",
+      "description": "Remove empty directories",
+      "options": "-p (parents)"
+    },
+    {
+      "name": "cp",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "cp [options] source destination",
+      "description": "Copy files",
+      "options": "-r (recursive), -i (interactive), -p (preserve)"
+    },
+    {
+      "name": "mv",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "mv [options] source destination",
+      "description": "Move or rename files",
+      "options": "-i (interactive), -f (force)"
+    },
+    {
+      "name": "cat",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "cat [options] file",
+      "description": "Display file contents",
+      "options": "-n (line numbers), -A (special chars)"
+    },
+    {
+      "name": "less",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "less file",
+      "description": "View file contents paginated",
+      "options": "space (next page), b (previous), q (quit)"
+    },
+    {
+      "name": "more",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "more file",
+      "description": "View file contents paginated",
+      "options": "space (next page), q (quit)"
+    },
+    {
+      "name": "head",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "head [options] file",
+      "description": "Display first lines of file",
+      "options": "-n (number of lines), -c (bytes)"
+    },
+    {
+      "name": "tail",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "tail [options] file",
+      "description": "Display last lines of file",
+      "options": "-n (number of lines), -f (follow)"
+    },
+    {
+      "name": "grep",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "grep [options] pattern file",
+      "description": "Search for patterns in files",
+      "options": "-i (case insensitive), -r (recursive), -v (invert), -c (count)"
+    },
+    {
+      "name": "find",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "find path [options] expression",
+      "description": "Search for files",
+      "options": "-name, -type, -size, -mtime, -exec"
+    },
+    {
+      "name": "locate",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "locate pattern",
+      "description": "Find files by name",
+      "options": "-i (case insensitive), -c (count)"
+    },
+    {
+      "name": "which",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "which command",
+      "description": "Locate command in PATH",
+      "options": "-a (all matches)"
+    },
+    {
+      "name": "whereis",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "whereis command",
+      "description": "Locate command, source, and manual",
+      "options": "-b (binary), -m (manual), -s (source)"
+    },
+    {
+      "name": "file",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "file file",
+      "description": "Determine file type",
+      "options": "-i (MIME type)"
+    },
+    {
+      "name": "useradd",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "useradd [options] username",
+      "description": "Create new user account",
+      "options": "-m (create home directory), -M (do not create home directory), -s (set login shell), -u (set UID), -g (set primary group), -G (set supplementary groups), -c (set comment/GECOS), -d (set home directory), -e (set account expiration date), -r (create system account), -N (do not create user private group)"
+    },
+    {
+      "name": "userdel",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "userdel [options] username",
+      "description": "Delete user account",
+      "options": "-r (remove home directory and mail spool), -f (force removal), -Z (remove SELinux user mapping)"
+    },
+    {
+      "name": "usermod",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "usermod [options] username",
+      "description": "Modify user account",
+      "options": "-l (change login name), -u (change UID), -g (change primary group), -G (set supplementary groups), -aG (append supplementary groups), -d (change home directory), -m (move home directory), -s (change login shell), -c (change comment), -e (set account expiration), -f (set inactive days), -L (lock account), -U (unlock account), -p (set encrypted password)"
+    },
+    {
+      "name": "passwd",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "passwd [options] [username]",
+      "description": "Change user password",
+      "options": "-l (lock password), -u (unlock password), -e (expire password now), -d (delete password), -x (set max password age), -n (set min password age), -w (set warning days), -i (set inactive days), -S (show password status)"
+    },
+    {
+      "name": "groupadd",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "groupadd [options] groupname",
+      "description": "Create new group",
+      "options": "-g (set GID), -r (create system group), -f (exit successfully if group exists), -K (override login.defs defaults), -p (set encrypted group password)"
+    },
+    {
+      "name": "groupdel",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "groupdel groupname",
+      "description": "Delete group",
+      "options": "-h (display help), --help (display help), --version (display version)"
+    },
+    {
+      "name": "groupmod",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "groupmod [options] groupname",
+      "description": "Modify group",
+      "options": "-n (set new group name), -g (set new GID), -o (allow non-unique GID), -p (set encrypted group password)"
+    },
+    {
+      "name": "gpasswd",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "gpasswd [options] group",
+      "description": "Manage group passwords and members",
+      "options": "-a (add user to group), -d (remove user from group), -A (set group admins), -M (set full member list), -r (remove group password), -R (restrict group access to members), -Q (show group members)"
+    },
+    {
+      "name": "id",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "id [options] [username]",
+      "description": "Display user and group IDs",
+      "options": "-u (show UID), -g (show primary GID), -G (show all group IDs), -n (show names instead of IDs), -r (show real ID instead of effective ID), -Z (show SELinux context)"
+    },
+    {
+      "name": "whoami",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "whoami",
+      "description": "Display current user",
+      "options": ""
+    },
+    {
+      "name": "who",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "who [options]",
+      "description": "Display logged in users",
+      "options": "-a (show all details), -b (show last system boot), -q (quick: names and count), -H (print header), -u (show idle time and PID), -r (show current runlevel)"
+    },
+    {
+      "name": "w",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "w [options] [user]",
+      "description": "Display logged in users and their activities",
+      "options": "-h (no header), -s (short format), -f (toggle from field), -i (IP address mode), -o (old output format), -u (ignore username while calculating process and CPU times)"
+    },
+    {
+      "name": "last",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "last [options] [user]",
+      "description": "Display login history",
+      "options": "-n (number), -f (file)"
+    },
+    {
+      "name": "lastlog",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "syntax": "lastlog [options]",
+      "description": "Display last login information",
+      "options": "-u (user), -t (days)"
+    },
+    {
+      "name": "sudo",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "sudo [options] command",
+      "description": "Execute command as superuser",
+      "options": "-u (user), -i (login shell), -s (shell)"
+    },
+    {
+      "name": "su",
+      "chapter": 2,
+      "difficulty": "intermediate",
+      "syntax": "su [options] [user]",
+      "description": "Switch user",
+      "options": "- (login shell), -c (command)"
+    },
+    {
+      "name": "chmod",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "syntax": "chmod [options] mode file",
+      "description": "Change file permissions",
+      "options": "-R (recursive), -v (verbose)"
+    },
+    {
+      "name": "chown",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "syntax": "chown [options] owner:group file",
+      "description": "Change file owner and group",
+      "options": "-R (recursive), -v (verbose)"
+    },
+    {
+      "name": "chgrp",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "syntax": "chgrp [options] group file",
+      "description": "Change file group",
+      "options": "-R (recursive), -v (verbose)"
+    },
+    {
+      "name": "umask",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "syntax": "umask [mask]",
+      "description": "Set default file permissions",
+      "options": ""
+    },
+    {
+      "name": "ls -l",
+      "chapter": 4,
+      "difficulty": "beginner",
+      "syntax": "ls -l [file]",
+      "description": "List files with permissions",
+      "options": ""
+    },
+    {
+      "name": "stat",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "syntax": "stat [options] file",
+      "description": "Display file statistics",
+      "options": "-L (follow symlinks)"
+    },
+    {
+      "name": "setfacl",
+      "chapter": 4,
+      "difficulty": "advanced",
+      "syntax": "setfacl [options] acl file",
+      "description": "Set file ACLs",
+      "options": "-m (modify), -x (remove), -R (recursive)"
+    },
+    {
+      "name": "getfacl",
+      "chapter": 4,
+      "difficulty": "advanced",
+      "syntax": "getfacl [options] file",
+      "description": "Display file ACLs",
+      "options": "-R (recursive)"
+    },
+    {
+      "name": "semanage",
+      "chapter": 5,
+      "difficulty": "advanced",
+      "syntax": "semanage [options] object",
+      "description": "Manage SELinux policy",
+      "options": "fcontext, user, role, port"
+    },
+    {
+      "name": "getenforce",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "getenforce",
+      "description": "Display SELinux enforcement mode",
+      "options": ""
+    },
+    {
+      "name": "setenforce",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "setenforce [Enforcing|Permissive|Disabled]",
+      "description": "Set SELinux enforcement mode",
+      "options": ""
+    },
+    {
+      "name": "getsebool",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "getsebool [options] boolean",
+      "description": "Display SELinux boolean value",
+      "options": "-a (all)"
+    },
+    {
+      "name": "setsebool",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "setsebool [options] boolean value",
+      "description": "Set SELinux boolean",
+      "options": "-P (permanent)"
+    },
+    {
+      "name": "restorecon",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "restorecon [options] file",
+      "description": "Restore SELinux context",
+      "options": "-R (recursive), -v (verbose)"
+    },
+    {
+      "name": "chcon",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "chcon [options] context file",
+      "description": "Change SELinux context",
+      "options": "-R (recursive), -v (verbose)"
+    },
+    {
+      "name": "ls -Z",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "ls -Z [file]",
+      "description": "List files with SELinux context",
+      "options": ""
+    },
+    {
+      "name": "ps -Z",
+      "chapter": 5,
+      "difficulty": "intermediate",
+      "syntax": "ps -Z [options]",
+      "description": "Display processes with SELinux context",
+      "options": ""
+    },
+    {
+      "name": "ifconfig",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "ifconfig [interface] [options]",
+      "description": "Configure network interfaces (deprecated)",
+      "options": "up, down, address, netmask"
+    },
+    {
+      "name": "ip",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "ip [object] [command] [options]",
+      "description": "Show/manipulate routing, devices, policy",
+      "options": "addr, link, route, netns"
+    },
+    {
+      "name": "ip addr",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "ip addr [command] [options]",
+      "description": "Manage IP addresses",
+      "options": "show, add, del"
+    },
+    {
+      "name": "ip route",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "ip route [command] [options]",
+      "description": "Manage routing table",
+      "options": "show, add, del"
+    },
+    {
+      "name": "nmcli",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "nmcli [options] object command",
+      "description": "NetworkManager command line interface",
+      "options": "connection, device, general"
+    },
+    {
+      "name": "nmtui",
+      "chapter": 6,
+      "difficulty": "beginner",
+      "syntax": "nmtui",
+      "description": "NetworkManager text user interface",
+      "options": ""
+    },
+    {
+      "name": "ping",
+      "chapter": 6,
+      "difficulty": "beginner",
+      "syntax": "ping [options] host",
+      "description": "Test network connectivity",
+      "options": "-c (count), -i (interval), -s (packet size)"
+    },
+    {
+      "name": "traceroute",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "traceroute [options] host",
+      "description": "Trace route to host",
+      "options": "-m (max hops), -n (numeric)"
+    },
+    {
+      "name": "netstat",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "netstat [options]",
+      "description": "Display network statistics",
+      "options": "-a (all), -t (tcp), -u (udp), -l (listening), -n (numeric)"
+    },
+    {
+      "name": "ss",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "ss [options]",
+      "description": "Socket statistics (netstat replacement)",
+      "options": "-a (all), -t (tcp), -u (udp), -l (listening)"
+    },
+    {
+      "name": "nslookup",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "nslookup [options] host [server]",
+      "description": "Query DNS",
+      "options": "-type (record type)"
+    },
+    {
+      "name": "dig",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "dig [options] host [type]",
+      "description": "DNS lookup utility",
+      "options": "+short, @server, -x (reverse)"
+    },
+    {
+      "name": "host",
+      "chapter": 6,
+      "difficulty": "beginner",
+      "syntax": "host [options] host [server]",
+      "description": "DNS lookup",
+      "options": "-t (type), -a (all)"
+    },
+    {
+      "name": "hostname",
+      "chapter": 6,
+      "difficulty": "beginner",
+      "syntax": "hostname [options] [name]",
+      "description": "Display or set hostname",
+      "options": "-I (IP address), -f (FQDN)"
+    },
+    {
+      "name": "hostnamectl",
+      "chapter": 6,
+      "difficulty": "intermediate",
+      "syntax": "hostnamectl [options] [command]",
+      "description": "Control system hostname",
+      "options": "set-hostname, status"
+    },
+    {
+      "name": "yum",
+      "chapter": 7,
+      "difficulty": "intermediate",
+      "syntax": "yum [options] command package",
+      "description": "Package manager (legacy)",
+      "options": "install, remove, update, search, info"
+    },
+    {
+      "name": "dnf",
+      "chapter": 7,
+      "difficulty": "intermediate",
+      "syntax": "dnf [options] command package",
+      "description": "Package manager (modern)",
+      "options": "install, remove, update, search, info"
+    },
+    {
+      "name": "rpm",
+      "chapter": 7,
+      "difficulty": "intermediate",
+      "syntax": "rpm [options] package",
+      "description": "RPM package manager",
+      "options": "-i (install), -e (erase), -q (query), -U (upgrade)"
+    },
+    {
+      "name": "apt",
+      "chapter": 7,
+      "difficulty": "intermediate",
+      "syntax": "apt [options] command",
+      "description": "Package manager (Debian/Ubuntu)",
+      "options": "install, remove, update, search"
+    },
+    {
+      "name": "systemctl",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "systemctl [options] command service",
+      "description": "Manage systemd services",
+      "options": "start, stop, restart, enable, disable, status"
+    },
+    {
+      "name": "systemd",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "systemd [options]",
+      "description": "System and service manager",
+      "options": ""
+    },
+    {
+      "name": "service",
+      "chapter": 8,
+      "difficulty": "beginner",
+      "syntax": "service service command",
+      "description": "Manage services (legacy)",
+      "options": "start, stop, restart, status"
+    },
+    {
+      "name": "chkconfig",
+      "chapter": 8,
+      "difficulty": "beginner",
+      "syntax": "chkconfig [options] service [on|off]",
+      "description": "Manage service runlevels (legacy)",
+      "options": "--list, --add, --del"
+    },
+    {
+      "name": "ps",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "ps [options]",
+      "description": "Display processes",
+      "options": "-a (all), -u (user), -x (all users), -f (full format), -e (every)"
+    },
+    {
+      "name": "top",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "top [options]",
+      "description": "Monitor processes interactively",
+      "options": "-u (user), -p (pid), -n (iterations)"
+    },
+    {
+      "name": "htop",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "htop [options]",
+      "description": "Interactive process viewer",
+      "options": "-u (user), -p (pid)"
+    },
+    {
+      "name": "kill",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "kill [options] pid",
+      "description": "Send signal to process",
+      "options": "-9 (SIGKILL), -15 (SIGTERM), -l (list signals)"
+    },
+    {
+      "name": "killall",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "killall [options] process",
+      "description": "Kill processes by name",
+      "options": "-9 (SIGKILL), -u (user)"
+    },
+    {
+      "name": "nice",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "nice [options] command",
+      "description": "Run command with priority",
+      "options": "-n (priority level)"
+    },
+    {
+      "name": "renice",
+      "chapter": 8,
+      "difficulty": "intermediate",
+      "syntax": "renice priority [options] pid",
+      "description": "Change process priority",
+      "options": "-p (pid), -u (user), -g (group)"
+    },
+    {
+      "name": "bg",
+      "chapter": 8,
+      "difficulty": "beginner",
+      "syntax": "bg [job]",
+      "description": "Resume job in background",
+      "options": ""
+    },
+    {
+      "name": "fg",
+      "chapter": 8,
+      "difficulty": "beginner",
+      "syntax": "fg [job]",
+      "description": "Bring job to foreground",
+      "options": ""
+    },
+    {
+      "name": "jobs",
+      "chapter": 8,
+      "difficulty": "beginner",
+      "syntax": "jobs [options]",
+      "description": "List jobs",
+      "options": "-l (long), -p (pid only)"
+    },
+    {
+      "name": "journalctl",
+      "chapter": 9,
+      "difficulty": "intermediate",
+      "syntax": "journalctl [options]",
+      "description": "Query systemd journal",
+      "options": "-u (unit), -n (lines), -f (follow), -p (priority)"
+    },
+    {
+      "name": "dmesg",
+      "chapter": 9,
+      "difficulty": "intermediate",
+      "syntax": "dmesg [options]",
+      "description": "Display kernel messages",
+      "options": "-c (clear), -l (level), -T (timestamp)"
+    },
+    {
+      "name": "logger",
+      "chapter": 9,
+      "difficulty": "intermediate",
+      "syntax": "logger [options] message",
+      "description": "Send message to syslog",
+      "options": "-t (tag), -p (priority)"
+    },
+    {
+      "name": "rsyslogd",
+      "chapter": 9,
+      "difficulty": "advanced",
+      "syntax": "rsyslogd [options]",
+      "description": "System logging daemon",
+      "options": "-f (config file), -d (debug)"
+    },
+    {
+      "name": "logrotate",
+      "chapter": 9,
+      "difficulty": "advanced",
+      "syntax": "logrotate [options] config",
+      "description": "Rotate log files",
+      "options": "-f (force), -d (debug)"
+    },
+    {
+      "name": "df",
+      "chapter": 9,
+      "difficulty": "beginner",
+      "syntax": "df [options] [filesystem]",
+      "description": "Display disk space usage",
+      "options": "-h (human), -i (inodes), -T (type)"
+    },
+    {
+      "name": "du",
+      "chapter": 9,
+      "difficulty": "beginner",
+      "syntax": "du [options] [directory]",
+      "description": "Display directory size",
+      "options": "-h (human), -s (summary), -a (all)"
+    },
+    {
+      "name": "free",
+      "chapter": 9,
+      "difficulty": "beginner",
+      "syntax": "free [options]",
+      "description": "Display memory usage",
+      "options": "-h (human), -m (MB), -g (GB)"
+    },
+    {
+      "name": "uptime",
+      "chapter": 9,
+      "difficulty": "beginner",
+      "syntax": "uptime",
+      "description": "Display system uptime",
+      "options": ""
+    },
+    {
+      "name": "iostat",
+      "chapter": 9,
+      "difficulty": "intermediate",
+      "syntax": "iostat [options] [interval] [count]",
+      "description": "Display I/O statistics",
+      "options": "-x (extended), -d (disk)"
+    },
+    {
+      "name": "vmstat",
+      "chapter": 9,
+      "difficulty": "intermediate",
+      "syntax": "vmstat [options] [interval] [count]",
+      "description": "Display virtual memory statistics",
+      "options": "-s (summary)"
+    },
+    {
+      "name": "firewall-cmd",
+      "chapter": 10,
+      "difficulty": "intermediate",
+      "syntax": "firewall-cmd [options]",
+      "description": "Manage firewalld",
+      "options": "--list-all, --add-port, --remove-port, --permanent"
+    },
+    {
+      "name": "firewalld",
+      "chapter": 10,
+      "difficulty": "intermediate",
+      "syntax": "firewalld [options]",
+      "description": "Dynamic firewall daemon",
+      "options": ""
+    },
+    {
+      "name": "iptables",
+      "chapter": 10,
+      "difficulty": "advanced",
+      "syntax": "iptables [options] [chain] [rule]",
+      "description": "Manage netfilter rules (legacy)",
+      "options": "-A (append), -D (delete), -L (list)"
+    },
+    {
+      "name": "nftables",
+      "chapter": 10,
+      "difficulty": "advanced",
+      "syntax": "nft [options] command",
+      "description": "Manage nftables rules",
+      "options": "list, add, delete"
+    },
+    {
+      "name": "grub2-mkconfig",
+      "chapter": 11,
+      "difficulty": "advanced",
+      "syntax": "grub2-mkconfig [options]",
+      "description": "Generate GRUB configuration",
+      "options": "-o (output file)"
+    },
+    {
+      "name": "grubby",
+      "chapter": 11,
+      "difficulty": "advanced",
+      "syntax": "grubby [options]",
+      "description": "Modify GRUB configuration",
+      "options": "--info, --update-kernel, --args"
+    },
+    {
+      "name": "uname",
+      "chapter": 11,
+      "difficulty": "beginner",
+      "syntax": "uname [options]",
+      "description": "Display system information",
+      "options": "-a (all), -r (release), -m (machine)"
+    },
+    {
+      "name": "lsb_release",
+      "chapter": 11,
+      "difficulty": "beginner",
+      "syntax": "lsb_release [options]",
+      "description": "Display Linux distribution info",
+      "options": "-a (all), -r (release)"
+    },
+    {
+      "name": "cat /proc/version",
+      "chapter": 11,
+      "difficulty": "beginner",
+      "syntax": "cat /proc/version",
+      "description": "Display kernel version",
+      "options": ""
+    },
+    {
+      "name": "fdisk",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "fdisk [options] device",
+      "description": "Partition table editor",
+      "options": "-l (list), -u (sectors)"
+    },
+    {
+      "name": "parted",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "parted [device] [command]",
+      "description": "Partition editor",
+      "options": "print, mkpart, rm, resize"
+    },
+    {
+      "name": "lsblk",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "syntax": "lsblk [options]",
+      "description": "List block devices",
+      "options": "-a (all), -d (disk only), -f (filesystems)"
+    },
+    {
+      "name": "blkid",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "syntax": "blkid [options] [device]",
+      "description": "Display block device attributes",
+      "options": "-L (label), -U (uuid)"
+    },
+    {
+      "name": "mkfs",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "mkfs [options] -t type device",
+      "description": "Create file system",
+      "options": "-L (label), -F (force)"
+    },
+    {
+      "name": "mount",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "syntax": "mount [options] device mount_point",
+      "description": "Mount file system",
+      "options": "-t (type), -o (options), -a (all)"
+    },
+    {
+      "name": "umount",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "syntax": "umount [options] mount_point",
+      "description": "Unmount file system",
+      "options": "-a (all), -l (lazy), -f (force)"
+    },
+    {
+      "name": "fstab",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "syntax": "vi /etc/fstab",
+      "description": "Configure automatic mounts",
+      "options": ""
+    },
+    {
+      "name": "pvcreate",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "pvcreate [options] device",
+      "description": "Create physical volume",
+      "options": ""
+    },
+    {
+      "name": "pvdisplay",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "pvdisplay [options] [device]",
+      "description": "Display physical volume info",
+      "options": "-v (verbose)"
+    },
+    {
+      "name": "vgcreate",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "vgcreate [options] vg_name device",
+      "description": "Create volume group",
+      "options": "-s (extent size)"
+    },
+    {
+      "name": "vgdisplay",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "vgdisplay [options] [vg_name]",
+      "description": "Display volume group info",
+      "options": "-v (verbose)"
+    },
+    {
+      "name": "lvcreate",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "lvcreate [options] -n lv_name vg_name",
+      "description": "Create logical volume",
+      "options": "-L (size), -l (extents)"
+    },
+    {
+      "name": "lvdisplay",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "lvdisplay [options] [lv_path]",
+      "description": "Display logical volume info",
+      "options": "-v (verbose)"
+    },
+    {
+      "name": "lvresize",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "lvresize [options] lv_path",
+      "description": "Resize logical volume",
+      "options": "-L (size), -l (extents)"
+    },
+    {
+      "name": "resize2fs",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "resize2fs [options] device",
+      "description": "Resize ext file system",
+      "options": "-f (force)"
+    },
+    {
+      "name": "xfs_growfs",
+      "chapter": 3,
+      "difficulty": "advanced",
+      "syntax": "xfs_growfs [options] mount_point",
+      "description": "Grow XFS file system",
+      "options": "-d (data), -l (log)"
+    },
+    {
+      "name": "tar",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "tar [options] archive [files]",
+      "description": "Archive files",
+      "options": "-c (create), -x (extract), -f (file), -z (gzip), -j (bzip2)"
+    },
+    {
+      "name": "gzip",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "gzip [options] file",
+      "description": "Compress file",
+      "options": "-d (decompress), -k (keep), -9 (best compression)"
+    },
+    {
+      "name": "gunzip",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "gunzip [options] file",
+      "description": "Decompress file",
+      "options": "-k (keep)"
+    },
+    {
+      "name": "zip",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "zip [options] archive files",
+      "description": "Create ZIP archive",
+      "options": "-r (recursive), -e (encrypt)"
+    },
+    {
+      "name": "unzip",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "unzip [options] archive",
+      "description": "Extract ZIP archive",
+      "options": "-l (list), -t (test), -d (directory)"
+    },
+    {
+      "name": "bzip2",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "bzip2 [options] file",
+      "description": "Compress file with bzip2",
+      "options": "-d (decompress), -k (keep)"
+    },
+    {
+      "name": "bunzip2",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "bunzip2 [options] file",
+      "description": "Decompress bzip2 file",
+      "options": "-k (keep)"
+    },
+    {
+      "name": "xz",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "xz [options] file",
+      "description": "Compress file with xz",
+      "options": "-d (decompress), -k (keep)"
+    },
+    {
+      "name": "unxz",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "unxz [options] file",
+      "description": "Decompress xz file",
+      "options": "-k (keep)"
+    },
+    {
+      "name": "sed",
+      "chapter": 1,
+      "difficulty": "advanced",
+      "syntax": "sed [options] script file",
+      "description": "Stream editor",
+      "options": "-e (expression), -i (in-place), -n (suppress)"
+    },
+    {
+      "name": "awk",
+      "chapter": 1,
+      "difficulty": "advanced",
+      "syntax": "awk [options] program file",
+      "description": "Text processing",
+      "options": "-F (field separator), -v (variable)"
+    },
+    {
+      "name": "cut",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "cut [options] file",
+      "description": "Remove sections from lines",
+      "options": "-d (delimiter), -f (fields), -c (characters)"
+    },
+    {
+      "name": "sort",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "sort [options] file",
+      "description": "Sort lines",
+      "options": "-r (reverse), -n (numeric), -k (key)"
+    },
+    {
+      "name": "uniq",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "uniq [options] file",
+      "description": "Report or omit repeated lines",
+      "options": "-c (count), -d (duplicates), -u (unique)"
+    },
+    {
+      "name": "wc",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "wc [options] file",
+      "description": "Count lines, words, characters",
+      "options": "-l (lines), -w (words), -c (bytes)"
+    },
+    {
+      "name": "tr",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "tr [options] set1 set2",
+      "description": "Translate characters",
+      "options": "-d (delete), -s (squeeze)"
+    },
+    {
+      "name": "diff",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "diff [options] file1 file2",
+      "description": "Compare files",
+      "options": "-u (unified), -r (recursive)"
+    },
+    {
+      "name": "patch",
+      "chapter": 1,
+      "difficulty": "advanced",
+      "syntax": "patch [options] file < patch_file",
+      "description": "Apply patch",
+      "options": "-p (strip), -R (reverse)"
+    },
+    {
+      "name": "echo",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "echo [options] string",
+      "description": "Print text",
+      "options": "-n (no newline), -e (interpret escapes)"
+    },
+    {
+      "name": "printf",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "printf format [arguments]",
+      "description": "Format and print",
+      "options": ""
+    },
+    {
+      "name": "date",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "date [options] [+format]",
+      "description": "Display/set date and time",
+      "options": "-s (set), -u (UTC)"
+    },
+    {
+      "name": "cal",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "cal [options] [month] [year]",
+      "description": "Display calendar",
+      "options": "-m (Monday first), -y (year)"
+    },
+    {
+      "name": "timedatectl",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "timedatectl [options] [command]",
+      "description": "Control system time and date",
+      "options": "set-time, set-timezone, status"
+    },
+    {
+      "name": "ln",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "ln [options] source link",
+      "description": "Create links",
+      "options": "-s (symbolic), -f (force)"
+    },
+    {
+      "name": "readlink",
+      "chapter": 1,
+      "difficulty": "intermediate",
+      "syntax": "readlink [options] link",
+      "description": "Display link target",
+      "options": "-f (follow)"
+    },
+    {
+      "name": "tree",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "tree [options] [directory]",
+      "description": "Display directory tree",
+      "options": "-L (level), -a (all)"
+    },
+    {
+      "name": "alias",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "alias [name=command]",
+      "description": "Create command alias",
+      "options": ""
+    },
+    {
+      "name": "unalias",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "unalias name",
+      "description": "Remove alias",
+      "options": "-a (all)"
+    },
+    {
+      "name": "history",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "history [options]",
+      "description": "Display command history",
+      "options": "-c (clear), -d (delete)"
+    },
+    {
+      "name": "man",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "man [options] command",
+      "description": "Display manual pages",
+      "options": "-k (search), -f (whatis)"
+    },
+    {
+      "name": "info",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "info [options] command",
+      "description": "Display info pages",
+      "options": ""
+    },
+    {
+      "name": "whatis",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "whatis command",
+      "description": "Display one-line description",
+      "options": ""
+    },
+    {
+      "name": "apropos",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "apropos keyword",
+      "description": "Search manual pages",
+      "options": "-r (regex)"
+    },
+    {
+      "name": "clear",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "clear",
+      "description": "Clear terminal screen",
+      "options": ""
+    },
+    {
+      "name": "reset",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "reset",
+      "description": "Reset terminal",
+      "options": ""
+    },
+    {
+      "name": "exit",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "exit [code]",
+      "description": "Exit shell",
+      "options": ""
+    },
+    {
+      "name": "logout",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "syntax": "logout",
+      "description": "Logout from shell",
+      "options": ""
+    }
+  ]
+}
