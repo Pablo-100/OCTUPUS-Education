@@ -5,9 +5,6 @@ import { appRouter } from "../../server/routers";
 import { createContext } from "../../server/_core/context";
 import express from "express";
 
-export const config = {
-  runtime: "nodejs",
-};
 
 // Create a mini express app for tRPC
 const app = express();
