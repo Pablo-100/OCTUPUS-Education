@@ -1,0 +1,45 @@
+{
+  "buildCommand": "pnpm run vercel-build",
+  "outputDirectory": "dist/public",
+  "installCommand": "pnpm install",
+  "framework": "vite",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs22.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/trpc/:path*",
+      "destination": "/api/trpc/[trpc]"
+    },
+    {
+      "source": "/api/oauth/local",
+      "destination": "/api/oauth/local"
+    },
+    {
+      "source": "/api/oauth/test",
+      "destination": "/api/oauth/test"
+    },
+    {
+      "source": "/api/oauth/google",
+      "destination": "/api/oauth/google/[[...path]]"
+    },
+    {
+      "source": "/api/oauth/google/:path*",
+      "destination": "/api/oauth/google/[[...path]]"
+    },
+    {
+      "source": "/api/oauth/github",
+      "destination": "/api/oauth/github/[[...path]]"
+    },
+    {
+      "source": "/api/oauth/github/:path*",
+      "destination": "/api/oauth/github/[[...path]]"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

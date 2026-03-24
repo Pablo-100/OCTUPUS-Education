@@ -1,13 +1,25 @@
 import { useTranslation } from "@/_core/hooks/useTranslation";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
-import { Award, TrendingUp, BookOpen, CheckCircle, Download } from "lucide-react";
+import {
+  Award,
+  TrendingUp,
+  BookOpen,
+  CheckCircle,
+  Download,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import jsPDF from "jspdf";
@@ -146,7 +158,7 @@ export default function Profile() {
     title: e.title,
     status: e.passed ? t("exams.passed") : t("exams.failed"),
     score: `${e.score}%`,
-    date: new Date(e.date).toLocaleDateString()
+    date: new Date(e.date).toLocaleDateString(),
   }));
 
   const chapterProgressItems =
@@ -170,12 +182,14 @@ export default function Profile() {
     .sort((a, b) => a.progress - b.progress)
     .slice(0, 3);
 
-  const recentScores = ((stats as any).examTrend || [])
+  const recentScores: { title: string; score: number }[] = (
+    (stats as any).examTrend || []
+  )
     .map((exam: any) => ({
-      title: exam.title,
+      title: exam.title as string,
       score: Math.round(parseFloat(String(exam.score))),
     }))
-    .filter((x: any) => Number.isFinite(x.score));
+    .filter((x: { title: string; score: number }) => Number.isFinite(x.score));
 
   const loadImageDataUrl = (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -218,7 +232,13 @@ export default function Profile() {
     return "C";
   };
 
-  const handleDownloadCertificate = async (cert: { id: string | number; kind?: "chapter" | "final"; name: string; date: Date | null; score?: number }) => {
+  const handleDownloadCertificate = async (cert: {
+    id: string | number;
+    kind?: "chapter" | "final";
+    name: string;
+    date: Date | null;
+    score?: number;
+  }) => {
     const doc = new jsPDF({
       orientation: "landscape",
       unit: "mm",
@@ -226,14 +246,14 @@ export default function Profile() {
     });
 
     const isFinalCertificate = cert.kind === "final";
-    const dateString = new Date(cert.date || Date.now()).toLocaleDateString("fr-FR");
+    const dateString = new Date(cert.date || Date.now()).toLocaleDateString(
+      "fr-FR"
+    );
     const randomToken = Math.random().toString(36).slice(2, 6).toUpperCase();
     const certificateId = isFinalCertificate
       ? `OCTO-RHCSA-${randomToken}`
       : `OCTO-MOD-${randomToken}`;
     const verificationUrl = `https://www.octopus-edu.com/verify/${certificateId}`;
-    
-    
 
     const width = doc.internal.pageSize.getWidth();
     const height = doc.internal.pageSize.getHeight();
@@ -251,17 +271,23 @@ export default function Profile() {
     doc.setLineWidth(0.4);
     doc.rect(margin, margin, width - 2 * margin, height - 2 * margin, "S");
 
-    const [logoDataUrl, signatureDataUrl] = await Promise.all([ loadFirstAvailableImage(["/logo2.png", "/logo.png", "/logo.jpg"]), loadFirstAvailableImage(["/signatur.png", "/signature.png", "/signature.jpg", "/sig.png"]) ]);
-
-    
-
-
+    const [logoDataUrl, signatureDataUrl] = await Promise.all([
+      loadFirstAvailableImage(["/logo2.png", "/logo.png", "/logo.jpg"]),
+      loadFirstAvailableImage([
+        "/signatur.png",
+        "/signature.png",
+        "/signature.jpg",
+        "/sig.png",
+      ]),
+    ]);
 
     doc.setTextColor(primary[0], primary[1], primary[2]);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(24);
     doc.text(
-      isFinalCertificate ? "CERTIFICATE OF ACHIEVEMENT" : "CERTIFICATE OF COMPLETION",
+      isFinalCertificate
+        ? "CERTIFICATE OF ACHIEVEMENT"
+        : "CERTIFICATE OF COMPLETION",
       width / 2,
       50,
       { align: "center" }
@@ -289,21 +315,35 @@ export default function Profile() {
     doc.setFontSize(12);
 
     if (isFinalCertificate) {
-      doc.text("for successfully completing the", width / 2, 96, { align: "center" });
+      doc.text("for successfully completing the", width / 2, 96, {
+        align: "center",
+      });
       doc.setTextColor(primary[0], primary[1], primary[2]);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(14);
-        doc.text("RHCSA - Red Hat Certified System Administrator Training Program", width / 2, 108, {
-        align: "center",
-      });
+      doc.text(
+        "RHCSA - Red Hat Certified System Administrator Training Program",
+        width / 2,
+        108,
+        {
+          align: "center",
+        }
+      );
 
       doc.setTextColor(secondary[0], secondary[1], secondary[2]);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(11);
-      doc.text("Delivered by Octopus Education", width / 2, 118, { align: "center" });
-        doc.text("The recipient has demonstrated solid understanding and practical skills in:", width / 2, 128, {
+      doc.text("Delivered by Octopus Education", width / 2, 118, {
         align: "center",
       });
+      doc.text(
+        "The recipient has demonstrated solid understanding and practical skills in:",
+        width / 2,
+        128,
+        {
+          align: "center",
+        }
+      );
 
       const finalPoints = [
         "Linux system administration",
@@ -321,10 +361,14 @@ export default function Profile() {
       if ("score" in cert && typeof cert.score === "number") {
         doc.setTextColor(primary[0], primary[1], primary[2]);
         doc.setFont("helvetica", "bold");
-        doc.text(`Final Average Score: ${cert.score}%`, width / 2, 172, { align: "center" });
+        doc.text(`Final Average Score: ${cert.score}%`, width / 2, 172, {
+          align: "center",
+        });
       }
     } else {
-      doc.text("has successfully completed the module", width / 2, 96, { align: "center" });
+      doc.text("has successfully completed the module", width / 2, 96, {
+        align: "center",
+      });
       doc.setTextColor(primary[0], primary[1], primary[2]);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(16);
@@ -333,66 +377,146 @@ export default function Profile() {
       doc.setTextColor(secondary[0], secondary[1], secondary[2]);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(11);
-      doc.text("as part of the RHCSA Training Program", width / 2, 118, { align: "center" });
-      doc.text("delivered by Octopus Education.", width / 2, 126, { align: "center" });
-        doc.text("This module covered essential concepts and practical skills related to:", width / 2, 134, {
+      doc.text("as part of the RHCSA Training Program", width / 2, 118, {
         align: "center",
       });
+      doc.text("delivered by Octopus Education.", width / 2, 126, {
+        align: "center",
+      });
+      doc.text(
+        "This module covered essential concepts and practical skills related to:",
+        width / 2,
+        134,
+        {
+          align: "center",
+        }
+      );
 
       doc.setTextColor(textColor[0], textColor[1], textColor[2]);
       doc.setFontSize(10.5);
 
       const getModulePoints = (name: string) => {
         const lowerName = name.toLowerCase();
-        if (lowerName.includes("chapter 1") || lowerName.includes("fundamentals")) {
-          return ["System Administration Basics", "User Environment Configuration", "Basic File Management"];
+        if (
+          lowerName.includes("chapter 1") ||
+          lowerName.includes("fundamentals")
+        ) {
+          return [
+            "System Administration Basics",
+            "User Environment Configuration",
+            "Basic File Management",
+          ];
         }
         if (lowerName.includes("chapter 2") || lowerName.includes("user")) {
-          return ["User and Group Creation", "Password Policies", "Access Control"];
+          return [
+            "User and Group Creation",
+            "Password Policies",
+            "Access Control",
+          ];
         }
-        if (lowerName.includes("chapter 3") || lowerName.includes("file system") || lowerName.includes("storage")) {
-          return ["Partition Management", "LVM Configuration", "File System Maintenance"];
+        if (
+          lowerName.includes("chapter 3") ||
+          lowerName.includes("file system") ||
+          lowerName.includes("storage")
+        ) {
+          return [
+            "Partition Management",
+            "LVM Configuration",
+            "File System Maintenance",
+          ];
         }
         if (lowerName.includes("chapter 4") || lowerName.includes("boot")) {
-          return ["GRUB Configuration", "System Initialization", "Boot Troubleshooting"];
+          return [
+            "GRUB Configuration",
+            "System Initialization",
+            "Boot Troubleshooting",
+          ];
         }
         if (lowerName.includes("chapter 5") || lowerName.includes("network")) {
-          return ["Network Interface Configuration", "Connection Troubleshooting", "Network Services"];
+          return [
+            "Network Interface Configuration",
+            "Connection Troubleshooting",
+            "Network Services",
+          ];
         }
         if (lowerName.includes("chapter 6") || lowerName.includes("selinux")) {
-          return ["SELinux Contexts", "Boolean Toggles", "Policy Troubleshooting"];
+          return [
+            "SELinux Contexts",
+            "Boolean Toggles",
+            "Policy Troubleshooting",
+          ];
         }
-        if (lowerName.includes("chapter 7") || lowerName.includes("service") || lowerName.includes("daemon")) {
-          return ["Systemd Management", "Service Targets", "Daemon Configuration"];
+        if (
+          lowerName.includes("chapter 7") ||
+          lowerName.includes("service") ||
+          lowerName.includes("daemon")
+        ) {
+          return [
+            "Systemd Management",
+            "Service Targets",
+            "Daemon Configuration",
+          ];
         }
         if (lowerName.includes("chapter 8") || lowerName.includes("package")) {
-          return ["YUM/DNF Repositories", "Software Installation", "AppStreams and Modules"];
+          return [
+            "YUM/DNF Repositories",
+            "Software Installation",
+            "AppStreams and Modules",
+          ];
         }
-        if (lowerName.includes("chapter 9") || lowerName.includes("performance") || lowerName.includes("monitoring")) {
-          return ["System Monitoring Tools", "Process Management", "Resource Tuning"];
+        if (
+          lowerName.includes("chapter 9") ||
+          lowerName.includes("performance") ||
+          lowerName.includes("monitoring")
+        ) {
+          return [
+            "System Monitoring Tools",
+            "Process Management",
+            "Resource Tuning",
+          ];
         }
         if (lowerName.includes("chapter 10") || lowerName.includes("log")) {
-          return ["Rsyslog Configuration", "Journalctl Usage", "Log Rotation Analysis"];
+          return [
+            "Rsyslog Configuration",
+            "Journalctl Usage",
+            "Log Rotation Analysis",
+          ];
         }
-        if (lowerName.includes("chapter 11") || lowerName.includes("scripting") || lowerName.includes("automation")) {
+        if (
+          lowerName.includes("chapter 11") ||
+          lowerName.includes("scripting") ||
+          lowerName.includes("automation")
+        ) {
           return ["Bash Fundamentals", "Automation Scripts", "Execution Flows"];
         }
-        if (lowerName.includes("chapter 12") || lowerName.includes("troubleshooting") || lowerName.includes("advanced")) {
-          return ["Advanced System Recovery", "Kernel Management", "Complex Issue Resolution"];
+        if (
+          lowerName.includes("chapter 12") ||
+          lowerName.includes("troubleshooting") ||
+          lowerName.includes("advanced")
+        ) {
+          return [
+            "Advanced System Recovery",
+            "Kernel Management",
+            "Complex Issue Resolution",
+          ];
         }
         if (lowerName.includes("firewall")) {
-          return ["Firewall Configuration", "Network Security Policies", "Port Management"];
+          return [
+            "Firewall Configuration",
+            "Network Security Policies",
+            "Port Management",
+          ];
         }
         return [
           "Linux administration concepts",
           "Practical RHCSA command-line skills",
-          "System operations and troubleshooting"
+          "System operations and troubleshooting",
         ];
       };
 
       const modulePoints = getModulePoints(cert.name);
       modulePoints.forEach((point, idx) => {
-        doc.text(`- ${point}`, width / 2, 144 + (idx * 8), { align: "center" });
+        doc.text(`- ${point}`, width / 2, 144 + idx * 8, { align: "center" });
       });
     }
 
@@ -401,40 +525,47 @@ export default function Profile() {
     doc.setFontSize(10);
     doc.text(`Date: ${dateString}`, 24, 166);
     doc.text(`Certificate ID: ${certificateId}`, 24, 173);
-    
-    
 
     if (isFinalCertificate) {
       doc.text(`Verification: ${verificationUrl}`, 24, 180);
     }
 
-        if (logoDataUrl) {
+    if (logoDataUrl) {
       doc.addImage(logoDataUrl, "PNG", 26, 134, 32, 32);
     }
 
     doc.setDrawColor(secondary[0], secondary[1], secondary[2]);
     doc.setLineWidth(0.2);
-        if (signatureDataUrl) { 
-      doc.addImage(signatureDataUrl, "PNG", width - 85, 134, 50, 20); 
+    if (signatureDataUrl) {
+      doc.addImage(signatureDataUrl, "PNG", width - 85, 134, 50, 20);
     }
     doc.line(width - 90, 154, width - 30, 154);
 
     doc.setTextColor(secondary[0], secondary[1], secondary[2]);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text(isFinalCertificate ? "Authorized Signature" : "Signature", width - 60, 160, { align: "center" });
+    doc.text(
+      isFinalCertificate ? "Authorized Signature" : "Signature",
+      width - 60,
+      160,
+      { align: "center" }
+    );
 
     doc.setFont("helvetica", "normal");
     doc.text("Mustapha Amin Tbini", width - 60, 168, { align: "center" });
     doc.text(
-      isFinalCertificate ? "Founder & Lead Instructor" : "Founder & Cybersecurity Instructor",
+      isFinalCertificate
+        ? "Founder & Lead Instructor"
+        : "Founder & Cybersecurity Instructor",
       width - 60,
       174,
       { align: "center" }
     );
     doc.text("Octopus Education", width - 60, 180, { align: "center" });
 
-    doc.save(`${isFinalCertificate ? "Final" : "Module"}_Certificate_${cert.name.replace(/\s+/g, "_")}.pdf`);
+    doc.save(
+      `${isFinalCertificate ? "Final" : "Module"}_Certificate_${cert.name.replace(/\s+/g, "_")}.pdf`
+    );
   };
 
   return (
@@ -442,7 +573,9 @@ export default function Profile() {
       {/* Header */}
       <div className="space-y-4">
         <h1 className="text-4xl font-bold">{t("profile.title")}</h1>
-        <p className="text-lg text-muted-foreground">{t("profile.track_progress")}</p>
+        <p className="text-lg text-muted-foreground">
+          {t("profile.track_progress")}
+        </p>
       </div>
 
       {/* User Info Card */}
@@ -455,24 +588,31 @@ export default function Profile() {
                   <Input
                     value={profileName}
                     onChange={e => setProfileName(e.target.value)}
-                    placeholder={language === "fr" ? "Nom complet" : "Full name"}
+                    placeholder={
+                      language === "fr" ? "Nom complet" : "Full name"
+                    }
                   />
                   <Input
                     type="email"
                     value={profileEmail}
                     onChange={e => setProfileEmail(e.target.value)}
-                    placeholder={language === "fr" ? "Adresse email" : "Email address"}
+                    placeholder={
+                      language === "fr" ? "Adresse email" : "Email address"
+                    }
                   />
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-bold text-foreground">{user?.name || "User"}</h2>
+                  <h2 className="text-2xl font-bold text-foreground">
+                    {user?.name || "User"}
+                  </h2>
                   <p className="text-muted-foreground">{user?.email}</p>
                 </>
               )}
               <div className="flex gap-2 mt-3">
                 <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-400">
-                  {stats.chaptersCompleted}/{stats.totalChapters} {t("profile.chapters")}
+                  {stats.chaptersCompleted}/{stats.totalChapters}{" "}
+                  {t("profile.chapters")}
                 </Badge>
                 <Badge className="bg-green-500/20 text-green-700 dark:text-green-400">
                   {dailyStreak} {t("profile.day_streak")}
@@ -483,7 +623,9 @@ export default function Profile() {
               <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">
                 {stats.averageScore}%
               </div>
-              <p className="text-sm text-muted-foreground">{t("profile.average_score")}</p>
+              <p className="text-sm text-muted-foreground">
+                {t("profile.average_score")}
+              </p>
               <div className="mt-3 flex justify-end gap-2">
                 {isEditingProfile ? (
                   <>
@@ -514,7 +656,11 @@ export default function Profile() {
                     </Button>
                   </>
                 ) : (
-                  <Button size="sm" variant="outline" onClick={() => setIsEditingProfile(true)}>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setIsEditingProfile(true)}
+                  >
                     {language === "fr" ? "Modifier profil" : "Edit Profile"}
                   </Button>
                 )}
@@ -522,7 +668,9 @@ export default function Profile() {
             </div>
           </div>
           {profileFeedback ? (
-            <p className="text-sm mt-3 text-muted-foreground">{profileFeedback}</p>
+            <p className="text-sm mt-3 text-muted-foreground">
+              {profileFeedback}
+            </p>
           ) : null}
         </CardContent>
       </Card>
@@ -540,7 +688,10 @@ export default function Profile() {
             <div className="text-2xl font-bold">
               {stats.chaptersCompleted}/{stats.totalChapters}
             </div>
-            <Progress value={(stats.chaptersCompleted / stats.totalChapters) * 100} className="mt-2" />
+            <Progress
+              value={(stats.chaptersCompleted / stats.totalChapters) * 100}
+              className="mt-2"
+            />
           </CardContent>
         </Card>
 
@@ -555,7 +706,10 @@ export default function Profile() {
             <div className="text-2xl font-bold">
               {stats.labsCompleted}/{stats.totalLabs}
             </div>
-            <Progress value={(stats.labsCompleted / stats.totalLabs) * 100} className="mt-2" />
+            <Progress
+              value={(stats.labsCompleted / stats.totalLabs) * 100}
+              className="mt-2"
+            />
           </CardContent>
         </Card>
 
@@ -570,7 +724,10 @@ export default function Profile() {
             <div className="text-2xl font-bold">
               {stats.examsCompleted}/{stats.totalExams}
             </div>
-            <Progress value={(stats.examsCompleted / stats.totalExams) * 100} className="mt-2" />
+            <Progress
+              value={(stats.examsCompleted / stats.totalExams) * 100}
+              className="mt-2"
+            />
           </CardContent>
         </Card>
 
@@ -585,7 +742,9 @@ export default function Profile() {
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">
               {stats.averageScore}%
             </div>
-            <p className="text-xs text-muted-foreground mt-2">{t("profile.average_performance")}</p>
+            <p className="text-xs text-muted-foreground mt-2">
+              {t("profile.average_performance")}
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -593,10 +752,18 @@ export default function Profile() {
       {/* Main Content */}
       <Tabs defaultValue="progress" className="space-y-4">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="progress">{t("profile.tabs.progress")}</TabsTrigger>
-          <TabsTrigger value="activity">{t("profile.tabs.activity")}</TabsTrigger>
-          <TabsTrigger value="certificates">{t("profile.tabs.certificates")}</TabsTrigger>
-          <TabsTrigger value="settings">{t("profile.tabs.settings")}</TabsTrigger>
+          <TabsTrigger value="progress">
+            {t("profile.tabs.progress")}
+          </TabsTrigger>
+          <TabsTrigger value="activity">
+            {t("profile.tabs.activity")}
+          </TabsTrigger>
+          <TabsTrigger value="certificates">
+            {t("profile.tabs.certificates")}
+          </TabsTrigger>
+          <TabsTrigger value="settings">
+            {t("profile.tabs.settings")}
+          </TabsTrigger>
         </TabsList>
 
         {/* Progress Tab */}
@@ -604,7 +771,9 @@ export default function Profile() {
           <Card>
             <CardHeader>
               <CardTitle>{t("profile.chapter_progress.title")}</CardTitle>
-              <CardDescription>{t("profile.chapter_progress.subtitle")}</CardDescription>
+              <CardDescription>
+                {t("profile.chapter_progress.subtitle")}
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {chapterProgressItems.map((item, idx) => (
@@ -685,22 +854,32 @@ export default function Profile() {
           <Card>
             <CardHeader>
               <CardTitle>{t("profile.recent_activity.title")}</CardTitle>
-              <CardDescription>{t("profile.recent_activity.subtitle")}</CardDescription>
+              <CardDescription>
+                {t("profile.recent_activity.subtitle")}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {recentActivity.map((activity, idx) => (
-                  <div key={idx} className="flex items-start gap-4 pb-4 border-b border-border last:border-0 last:pb-0">
+                  <div
+                    key={idx}
+                    className="flex items-start gap-4 pb-4 border-b border-border last:border-0 last:pb-0"
+                  >
                     <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
                     <div className="flex-1">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="font-medium text-foreground">{activity.title}</p>
+                        <p className="font-medium text-foreground">
+                          {activity.title}
+                        </p>
                         <Badge variant="outline" className="capitalize">
                           {activity.status}
                         </Badge>
                       </div>
                       <p className="text-sm text-muted-foreground mt-1">
-                        {activity.score !== "-" ? `${t("profile.score")}: ${activity.score}` : t("common.completed")} · {activity.date}
+                        {activity.score !== "-"
+                          ? `${t("profile.score")}: ${activity.score}`
+                          : t("common.completed")}{" "}
+                        · {activity.date}
                       </p>
                     </div>
                   </div>
@@ -715,12 +894,14 @@ export default function Profile() {
           <Card>
             <CardHeader>
               <CardTitle>{t("profile.certificates.title")}</CardTitle>
-              <CardDescription>{t("profile.certificates.subtitle")}</CardDescription>
+              <CardDescription>
+                {t("profile.certificates.subtitle")}
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {certificates.length > 0 ? (
                 <div className="space-y-4">
-                  {certificates.map((cert) => (
+                  {certificates.map(cert => (
                     <div
                       key={cert.id}
                       className="p-4 border border-border rounded-lg hover:bg-accent transition-colors"
@@ -729,10 +910,15 @@ export default function Profile() {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
                             <Award className="w-5 h-5 text-yellow-500" />
-                            <p className="font-semibold text-foreground">{cert.name}</p>
+                            <p className="font-semibold text-foreground">
+                              {cert.name}
+                            </p>
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            {t("profile.certificates.completed_on")} {new Date(cert.date || Date.now()).toLocaleDateString()}
+                            {t("profile.certificates.completed_on")}{" "}
+                            {new Date(
+                              cert.date || Date.now()
+                            ).toLocaleDateString()}
                             {"score" in cert && typeof cert.score === "number"
                               ? ` · ${t("profile.score")}: ${cert.score}%`
                               : ""}
@@ -754,7 +940,9 @@ export default function Profile() {
               ) : (
                 <div className="text-center py-8">
                   <Award className="w-12 h-12 text-muted-foreground mx-auto mb-3 opacity-50" />
-                  <p className="text-muted-foreground">{t("profile.certificates.no_certificates")}</p>
+                  <p className="text-muted-foreground">
+                    {t("profile.certificates.no_certificates")}
+                  </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {t("profile.certificates.no_certificates_hint")}
                   </p>
@@ -773,24 +961,32 @@ export default function Profile() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm font-medium text-foreground">{t("profile.settings.email_notifications_title")}</label>
+                  <label className="text-sm font-medium text-foreground">
+                    {t("profile.settings.email_notifications_title")}
+                  </label>
                   <p className="text-sm text-muted-foreground mt-1">
                     {t("profile.settings.email_notifications_desc")}
                   </p>
                   <div className="mt-2">
                     <input type="checkbox" defaultChecked className="rounded" />
-                    <label className="ml-2 text-sm text-muted-foreground">{t("profile.settings.enable_notifications")}</label>
+                    <label className="ml-2 text-sm text-muted-foreground">
+                      {t("profile.settings.enable_notifications")}
+                    </label>
                   </div>
                 </div>
 
                 <div className="border-t border-border pt-4">
-                  <label className="text-sm font-medium text-foreground">{t("profile.settings.learning_reminders_title")}</label>
+                  <label className="text-sm font-medium text-foreground">
+                    {t("profile.settings.learning_reminders_title")}
+                  </label>
                   <p className="text-sm text-muted-foreground mt-1">
                     {t("profile.settings.learning_reminders_desc")}
                   </p>
                   <div className="mt-2">
                     <input type="checkbox" defaultChecked className="rounded" />
-                    <label className="ml-2 text-sm text-muted-foreground">{t("profile.settings.enable_reminders")}</label>
+                    <label className="ml-2 text-sm text-muted-foreground">
+                      {t("profile.settings.enable_reminders")}
+                    </label>
                   </div>
                 </div>
 
@@ -805,33 +1001,3 @@ export default function Profile() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
