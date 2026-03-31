@@ -10,19 +10,18 @@ const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
 
 
 
-function isSecureRequest(req: VercelRequest) {
-  const forwardedProto = req.headers["x-forwarded-proto"];
-  if (!forwardedProto) return false;
-  const protoList = Array.isArray(forwardedProto)
-    ? forwardedProto
-    : forwardedProto.split(",");
-  return protoList.some(proto => proto.trim().toLowerCase() === "https");
-}
-
 function getBaseUrl(req: VercelRequest) {
-  const protocol = isSecureRequest(req) ? "https" : "http";
+  // Use explicit env var if set (production on Render, etc.)
+  if (process.env.OAUTH_SERVER_URL) {
+    return process.env.OAUTH_SERVER_URL;
+  }
+  // Fallback: detect protocol from request headers
+  const forwardedProto = req.headers["x-forwarded-proto"];
+  const proto = Array.isArray(forwardedProto)
+    ? forwardedProto[0]
+    : (forwardedProto ?? "http").split(",")[0].trim();
   const host = req.headers.host || "localhost:3000";
-  return `${protocol}://${host}`;
+  return `${proto}://${host}`;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -101,7 +100,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       expiresInMs: ONE_YEAR_MS,
     });
 
-    const isSecure = isSecureRequest(req);
+    const isSecure = getBaseUrl(req).startsWith("https");
     const cookie = serializeCookie(COOKIE_NAME, sessionToken, {
       httpOnly: true,
       path: "/",
