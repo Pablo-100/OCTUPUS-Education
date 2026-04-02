@@ -6,6 +6,17 @@ import { sdk } from "./sdk";
 import axios from "axios";
 import express from "express";
 
+// ✅ FIX: Render ykhdem reverse proxy — req.protocol yarja3 "http" dima
+// Lazem nqraw x-forwarded-proto bch naamlou redirect URL b https sahiha
+function getBaseUrl(req: Request): string {
+  const forwardedProto = req.headers["x-forwarded-proto"];
+  const proto = forwardedProto
+    ? (Array.isArray(forwardedProto) ? forwardedProto[0] : forwardedProto.split(",")[0]).trim()
+    : req.protocol;
+  const host = req.get("host") || "localhost:5000";
+  return `${proto}://${host}`;
+}
+
 export function registerOAuthRoutes(app: Express) {
   app.use(express.json());
 
@@ -48,6 +59,7 @@ export function registerOAuthRoutes(app: Express) {
       res.status(500).json({ error: "Authentication failed." });
     }
   });
+
   app.get("/api/oauth/test", async (req: Request, res: Response) => {
     try {
       const openId = `test:mockuser`;
@@ -76,8 +88,9 @@ export function registerOAuthRoutes(app: Express) {
     }
   });
 
+  // ✅ Google OAuth — initiate
   app.get("/api/oauth/google", (req: Request, res: Response) => {
-    const redirectUri = `${req.protocol}://${req.get("host")}/api/oauth/google/callback`;
+    const redirectUri = `${getBaseUrl(req)}/api/oauth/google/callback`;
     const clientId = process.env.GOOGLE_CLIENT_ID;
     if (!clientId)
       return res.status(500).send("Google Client ID not configured.");
@@ -85,11 +98,12 @@ export function registerOAuthRoutes(app: Express) {
     res.redirect(url);
   });
 
+  // ✅ Google OAuth — callback
   app.get("/api/oauth/google/callback", async (req: Request, res: Response) => {
     const code = req.query.code as string;
     if (!code) return res.status(400).send("Code required");
     try {
-      const redirectUri = `${req.protocol}://${req.get("host")}/api/oauth/google/callback`;
+      const redirectUri = `${getBaseUrl(req)}/api/oauth/google/callback`;
       const { data: tokenData } = await axios.post(
         "https://oauth2.googleapis.com/token",
         {
@@ -143,8 +157,9 @@ export function registerOAuthRoutes(app: Express) {
     }
   });
 
+  // ✅ GitHub OAuth — initiate
   app.get("/api/oauth/github", (req: Request, res: Response) => {
-    const redirectUri = `${req.protocol}://${req.get("host")}/api/oauth/github/callback`;
+    const redirectUri = `${getBaseUrl(req)}/api/oauth/github/callback`;
     const clientId = process.env.GITHUB_CLIENT_ID;
     if (!clientId)
       return res.status(500).send("GitHub Client ID not configured.");
@@ -152,6 +167,7 @@ export function registerOAuthRoutes(app: Express) {
     res.redirect(url);
   });
 
+  // ✅ GitHub OAuth — callback
   app.get("/api/oauth/github/callback", async (req: Request, res: Response) => {
     const code = req.query.code as string;
     if (!code) return res.status(400).send("Code required");
@@ -175,7 +191,6 @@ export function registerOAuthRoutes(app: Express) {
 
       let email = userInfo.email;
       if (!email) {
-        // fetching emails if primary not exposed
         const { data: emails } = await axios.get(
           "https://api.github.com/user/emails",
           {
