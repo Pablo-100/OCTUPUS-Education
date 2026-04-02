@@ -357,104 +357,13 @@ Before you begin, ensure you have the following installed:
 - **PostgreSQL** database (recommend [Neon](https://neon.tech/) for serverless PostgreSQL)
 - **Git** ([Download](https://git-scm.com/downloads))
 
-### Installation
+### 🌐 Live Demo
 
-1. **Clone the repository**
+Experience the platform live — no installation required:
 
-```bash
-git clone https://github.com/Pablo-100/VOC---Vulnerability-Intelligence-Dashboard.git
-cd rhcsa-learning
-```
+**[🚀 Try OCTUPUS Education → octupus-education.onrender.com](https://octupus-education.onrender.com)**
 
-2. **Install dependencies**
-
-```bash
-pnpm install
-```
-
-3. **Configure environment variables**
-
-Create a `.env` file in the project root:
-
-```bash
-# Application Environment
-NODE_ENV=development
-
-# Database Configuration
-DATABASE_URL=postgresql://USER:PASSWORD@HOST/DB?sslmode=require
-
-# Authentication
-JWT_SECRET=your_super_secure_secret_key_here_min_32_chars
-
-# Optional OAuth Configuration
-OAUTH_SERVER_URL=
-OWNER_OPEN_ID=
-
-# Optional API Configuration
-BUILT_IN_FORGE_API_URL=
-BUILT_IN_FORGE_API_KEY=
-
-# Application ID
-VITE_APP_ID=rhcsa_auth_app
-
-# File Storage (Uses built-in proxy storage)
-# No AWS S3 configuration needed - handled by platform
-```
-
-4. **Set up the database**
-
-Generate and run database migrations:
-
-```bash
-pnpm run db:push
-```
-
-5. **Seed the database (optional)**
-
-Populate with demo data:
-
-```bash
-pnpm tsx server/seed-demo-data.mjs
-```
-
-Or use the Neon-specific seeder:
-
-```bash
-pnpm tsx server/seed-neon.ts
-```
-
-### Development
-
-Start the development server:
-
-```bash
-pnpm run dev
-```
-
-The application will be available at:
-
-- **Frontend + API**: `http://localhost:5000`
-- **Hot Module Replacement**: Enabled via Vite
-
-### Building for Production
-
-1. **Build the application**
-
-```bash
-pnpm run build
-```
-
-This command:
-
-- Builds the React frontend with Vite
-- Bundles the Express backend with esbuild
-- Outputs to the `dist/` directory
-
-2. **Start the production server**
-
-```bash
-pnpm run start
-```
+> **Note:** The live demo is hosted on Render's free tier. The first load may take 30–60 seconds to spin up the server.
 
 ---
 
@@ -621,178 +530,198 @@ trpc.progress.getExamStatuses.query();
 
 ## 🗄️ Database Schema
 
-### Core Tables
+The following diagrams detail each table's structure individually for clarity.
 
-#### users
+### users
 
-```sql
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(255) UNIQUE NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  role VARCHAR(50) DEFAULT 'student',
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+```mermaid
+erDiagram
+    USERS {
+        int id PK
+        string username UK
+        string email UK
+        string password
+        string role
+        timestamp created_at
+        timestamp updated_at
+    }
 ```
 
-#### chapters
+### chapters & commands
 
-```sql
-CREATE TABLE chapters (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  description TEXT,
-  order_number INTEGER NOT NULL,
-  difficulty VARCHAR(50),
-  created_at TIMESTAMP DEFAULT NOW()
-);
+```mermaid
+erDiagram
+    CHAPTERS ||--o{ COMMANDS : contains
+    CHAPTERS {
+        int id PK
+        string title
+        text description
+        int order_number
+        string difficulty
+        timestamp created_at
+    }
+    COMMANDS {
+        int id PK
+        string name UK
+        text description
+        text syntax
+        json options
+        json examples
+        int chapter_id FK
+        string difficulty
+        timestamp created_at
+    }
 ```
 
-#### commands
+### labs & submissions
 
-```sql
-CREATE TABLE commands (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) UNIQUE NOT NULL,
-  description TEXT,
-  syntax TEXT,
-  options JSON,
-  examples JSON,
-  chapter_id INTEGER REFERENCES chapters(id),
-  difficulty VARCHAR(50),
-  created_at TIMESTAMP DEFAULT NOW()
-);
+```mermaid
+erDiagram
+    LABS ||--o{ LAB_SUBMISSIONS : has
+    USERS ||--o{ LAB_SUBMISSIONS : submits
+    LABS {
+        int id PK
+        string title
+        string difficulty
+        int duration
+        text objectives
+        json instructions
+        json validation
+        text solutions
+        timestamp created_at
+    }
+    LAB_SUBMISSIONS {
+        int id PK
+        int user_id FK
+        int lab_id FK
+        json answers
+        int score
+        timestamp submitted_at
+    }
 ```
 
-#### labs
+### exams & questions
 
-```sql
-CREATE TABLE labs (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  difficulty VARCHAR(50),
-  duration INTEGER,
-  objectives TEXT,
-  instructions JSON,
-  validation JSON,
-  solutions TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
-);
+```mermaid
+erDiagram
+    EXAMS ||--o{ EXAM_QUESTIONS : contains
+    EXAM_QUESTIONS ||--o{ EXAM_ANSWERS : has
+    USERS ||--o{ EXAM_ANSWERS : answers
+    EXAMS {
+        int id PK
+        string title
+        text description
+        int time_limit
+        int total_questions
+        timestamp created_at
+    }
+    EXAM_QUESTIONS {
+        int id PK
+        int exam_id FK
+        text question
+        json options
+        string correct_answer
+        text explanation
+        string difficulty
+    }
+    EXAM_ANSWERS {
+        int id PK
+        int user_id FK
+        int question_id FK
+        string user_answer
+        boolean is_correct
+        timestamp answered_at
+    }
 ```
 
-#### exams
+### progress & certificates
 
-```sql
-CREATE TABLE exams (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  description TEXT,
-  time_limit INTEGER,
-  total_questions INTEGER,
-  created_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-### Relationship Tables
-
-#### user_progress
-
-```sql
-CREATE TABLE user_progress (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
-  chapter_id INTEGER REFERENCES chapters(id),
-  completion_percentage INTEGER DEFAULT 0,
-  last_accessed TIMESTAMP DEFAULT NOW(),
-  UNIQUE(user_id, chapter_id)
-);
-```
-
-#### lab_submissions
-
-```sql
-CREATE TABLE lab_submissions (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
-  lab_id INTEGER REFERENCES labs(id),
-  answers JSON,
-  score INTEGER,
-  submitted_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-#### exam_answers
-
-```sql
-CREATE TABLE exam_answers (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
-  question_id INTEGER REFERENCES exam_questions(id),
-  user_answer VARCHAR(255),
-  is_correct BOOLEAN,
-  answered_at TIMESTAMP DEFAULT NOW()
-);
+```mermaid
+erDiagram
+    USERS ||--o{ USER_PROGRESS : tracks
+    USERS ||--o{ CERTIFICATES : earns
+    CHAPTERS ||--o{ USER_PROGRESS : tracked_in
+    USER_PROGRESS {
+        int id PK
+        int user_id FK
+        int chapter_id FK
+        int completion_percentage
+        timestamp last_accessed
+    }
+    CERTIFICATES {
+        int id PK
+        int user_id FK
+        string certificate_type
+        timestamp issued_at
+        string certificate_url
+    }
 ```
 
 ---
 
 ## 🗺️ Roadmap
 
-### ✅ Phase 1: Core Platform (Completed)
+### 🚀 Current Platform (Available Now)
 
-- [x] OAuth authentication (Google, GitHub, Local)
-- [x] Chapter-based learning structure (12 chapters)
-- [x] Command database with search (125+ commands)
-- [x] Modern UI with Tailwind CSS and Radix UI
-- [x] PostgreSQL database with Drizzle ORM
-- [x] Type-safe tRPC API
-- [x] Bilingual support (English/French)
-- [x] Interactive terminal emulator (Podman/Docker)
-- [x] PDF generation (cheatsheets & certificates)
-- [x] Progress tracking system
-- [x] AI assistant integration (OCTOPUS)
+OCTOPUS Education is already a fully functional RHCSA learning platform with:
 
-### 🚧 Phase 2: Enhanced Features (In Progress)
-
-- [x] 18 QCM-format labs with completion tracking
-- [x] 3 practice exams with question banks
-- [ ] Advanced lab validation system
-- [ ] Real-time exam simulation with timer
-- [ ] Detailed analytics dashboard
-
-### 📅 Phase 3: Advanced Features (Planned)
-
-- [ ] Enhanced AI-powered hint system
-- [ ] Video tutorials integration
-- [ ] Community discussion forums
-- [ ] Advanced troubleshooting scenarios hub
-- [ ] Peer code review system
-- [ ] Gamification (badges, achievements, leaderboards)
-- [ ] Lab answer submission and validation
-- [ ] Collaborative learning features
-
-### 🔮 Phase 4: Expansion (Future)
-
-- [ ] Mobile application (React Native)
-- [ ] Offline mode support
-- [ ] Advanced analytics dashboard
-- [ ] Instructor/Admin panel
-- [ ] Third-party integrations (GitHub, LinkedIn)
-- [ ] Support for other certifications (RHCE, CKA, etc.)
+- ✅ OAuth authentication (Google, GitHub, Local)
+- ✅ 12 structured learning chapters
+- ✅ 125+ Linux commands with search
+- ✅ 18 interactive labs (QCM format)
+- ✅ Practice exams with question banks
+- ✅ Interactive terminal environment
+- ✅ Progress tracking dashboard
+- ✅ AI assistant for guidance
+- ✅ Bilingual support (EN/FR)
+- ✅ PDF exports (cheatsheets & certificates)
 
 ---
 
-## 📊 Performance Metrics
+### 🚧 Continuous Improvements
 
-- **Bundle Size (Client)**: ~450KB (gzipped)
-- **Time to Interactive**: <2s on 3G
-- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
-- **API Response Time**: <100ms (average)
-- **Database Query Time**: <50ms (average)
+We are actively enhancing the platform with:
+
+- Advanced lab validation system
+- Real-time exam simulation with timer
+- Detailed analytics dashboard
 
 ---
+
+### 📅 Upcoming Features
+
+- 🎯 Smart AI hints based on your progress
+- 🎥 Video tutorials for chapters and labs
+- 💬 Community discussions and support
+- 🧩 Real-world troubleshooting scenarios
+- 🏅 Gamification system (badges & achievements)
+- 👥 Collaborative learning features
+
+---
+
+### 🔮 Future Vision
+
+- Mobile application
+- Offline learning mode
+- Instructor / Admin dashboard
+- Third-party integrations (GitHub, LinkedIn)
+- Expansion to new certifications
+
+---
+
+> OCTOPUS Education is actively evolving — and this is just the beginning.
+
+## 🎓 Certifications
+
+OCTOPUS Education is continuously evolving.
+
+We will be adding new certifications progressively to expand the platform and cover more domains in system administration, cloud, and cybersecurity.
+
+🚀 Our goal is to build a unified learning ecosystem where you can prepare for multiple certifications in one place.
+
+💡 We are also open to your suggestions — feel free to share which certifications you'd like to see next!
+
+> Your feedback helps shape the future of OCTOPUS Education.
 
 ## 🔒 Security
 
@@ -850,8 +779,15 @@ SOFTWARE.
 
 ## 📞 Contact & Support
 
-- **GitHub Repository**: [View on GitHub](https://github.com/Pablo-100/VOC---Vulnerability-Intelligence-Dashboard)
+Have questions, feedback, or collaboration ideas? Feel free to reach out:
 
+- 📧 **Email**: mustaphaamintbini@gmail.com
+- 💼 **LinkedIn**: [https://www.linkedin.com/in/your-profile  ](https://www.linkedin.com/in/mustapha-amin-tbini/)
+- 💬 **WhatsApp**: +216 46345226
+
+---
+
+> We usually respond within 24 hours.
 ---
 
 ## 📈 Project Stats
@@ -864,7 +800,7 @@ SOFTWARE.
 
 <div align="center">
 
-**Made with ❤️ by the OCTOPUS Education Team**
+**Made by the OCTOPUS Education Team**
 
 [⬆ Back to Top](#-octopus-education)
 
