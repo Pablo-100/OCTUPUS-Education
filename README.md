@@ -33,7 +33,7 @@
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
+- [Live Demo](#-Live-Demo)
 - [Project Structure](#-project-structure)
 - [API Documentation](#-api-documentation)
 - [Database Schema](#-database-schema)
@@ -345,17 +345,6 @@ erDiagram
 ```
 
 ---
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Node.js** 22.0.0 or higher ([Download](https://nodejs.org/))
-- **pnpm** 10.0.0 or higher ([Installation Guide](https://pnpm.io/installation))
-- **PostgreSQL** database (recommend [Neon](https://neon.tech/) for serverless PostgreSQL)
-- **Git** ([Download](https://git-scm.com/downloads))
 
 ### 🌐 Live Demo
 
