@@ -23,28 +23,53 @@ export function registerOAuthRoutes(app: Express) {
   app.post("/api/oauth/local", async (req: Request, res: Response) => {
     try {
       const { email, name, action } = req.body;
-      if (!email) return res.status(400).json({ error: "Email is required" });
+      const normalizedAction =
+        action === "login" || action === "register" ? action : null;
+      if (!normalizedAction) {
+        return res.status(400).json({ error: "Invalid auth action." });
+      }
+      const normalizedEmail =
+        typeof email === "string" ? email.trim().toLowerCase() : "";
+      if (!normalizedEmail) {
+        return res.status(400).json({ error: "Email is required" });
+      }
 
-      const openId = `local:${email}`;
+      const openId = `local:${normalizedEmail}`;
       const existingUser = await db.getUserByOpenId(openId);
+      if (normalizedAction === "login" && !existingUser) {
+        return res.status(401).json({
+          error: "No account found for this email. Please create an account.",
+        });
+      }
+
+      if (normalizedAction === "register" && existingUser) {
+        return res.status(409).json({
+          error: "An account with this email already exists. Please sign in.",
+        });
+      }
+
+      const normalizedName =
+        typeof name === "string" && name.trim().length > 0
+          ? name.trim()
+          : normalizedEmail.split("@")[0];
       await db.upsertUser(
         existingUser
           ? {
               openId,
-              loginMethod: action || "local",
+              loginMethod: "local",
               lastSignedIn: new Date(),
             }
           : {
               openId,
-              name: name || email.split("@")[0],
-              email: email,
-              loginMethod: action || "local",
+              name: normalizedName,
+              email: normalizedEmail,
+              loginMethod: "local",
               lastSignedIn: new Date(),
             }
       );
 
       const sessionToken = await sdk.createSessionToken(openId, {
-        name: existingUser?.name || name || email.split("@")[0],
+        name: existingUser?.name || normalizedName,
         expiresInMs: ONE_YEAR_MS,
       });
 
