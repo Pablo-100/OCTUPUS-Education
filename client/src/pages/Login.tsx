@@ -30,10 +30,13 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, name, action }),
       });
+      const payload = await response.json().catch(() => null);
       if (response.ok) {
         window.location.href = "/chapters";
       } else {
-        alert("Authentication failed. Please check your credentials.");
+        alert(
+          payload?.error || "Authentication failed. Please check your credentials."
+        );
       }
     } catch (err) {
       console.error(err);
