@@ -782,8 +782,8 @@ SOFTWARE.
 Have questions, feedback, or collaboration ideas? Feel free to reach out:
 
 - 📧 **Email**: mustaphaamintbini@gmail.com
-- 💼 **LinkedIn**: [https://www.linkedin.com/in/your-profile  ](https://www.linkedin.com/in/mustapha-amin-tbini/)
-- 💬 **WhatsApp**: +216 46345226
+- 💼 **LinkedIn**: [https://www.linkedin.com/in/mustapha-amin-tbini ](https://www.linkedin.com/in/mustapha-amin-tbini/)
+- 💬 **WhatsApp**: +216 46-345-226
 
 ---
 
