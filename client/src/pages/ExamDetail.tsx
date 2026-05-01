@@ -373,24 +373,6 @@ export default function ExamDetail() {
     return () => clearInterval(timer);
   }, [started, submitted]);
 
-  if (isLoading) return <div>Loading exam...</div>;
-  if (!exam)
-    return (
-      <div>{language === "fr" ? "Examen introuvable." : "Exam not found."}</div>
-    );
-
-  const primaryScenarioRaw =
-    language === "fr" ? exam.descriptionFr : exam.descriptionEn;
-  const secondaryScenarioRaw =
-    language === "fr" ? exam.descriptionEn : exam.descriptionFr;
-  const scenario =
-    parseScenario(primaryScenarioRaw) || parseScenario(secondaryScenarioRaw);
-  const tasks = collectTasks(scenario);
-  const taskGroups = collectTaskGroups(scenario);
-  const initialisation =
-    scenario && typeof scenario === "object" ? scenario.initialisation : null;
-  const title = language === "fr" ? exam.titleFr : exam.titleEn;
-
   const fmt = (sec: number) => {
     const h = String(Math.floor(sec / 3600)).padStart(2, "0");
     const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
@@ -399,7 +381,7 @@ export default function ExamDetail() {
   };
 
   const submit = () => {
-    if (submitted) return;
+    if (submitted || !exam) return;
     let final = 0;
     if (questions && questions.length > 0) {
       let ok = 0;
@@ -444,6 +426,24 @@ export default function ExamDetail() {
   }, [autoSubmitRequested, started, submitted]);
 
   const previousAttempt = (examStatuses || []).find(s => s.examId === examId);
+
+  if (isLoading) return <div>Loading exam...</div>;
+  if (!exam)
+    return (
+      <div>{language === "fr" ? "Examen introuvable." : "Exam not found."}</div>
+    );
+
+  const primaryScenarioRaw =
+    language === "fr" ? exam.descriptionFr : exam.descriptionEn;
+  const secondaryScenarioRaw =
+    language === "fr" ? exam.descriptionEn : exam.descriptionFr;
+  const scenario =
+    parseScenario(primaryScenarioRaw) || parseScenario(secondaryScenarioRaw);
+  const tasks = collectTasks(scenario);
+  const taskGroups = collectTaskGroups(scenario);
+  const initialisation =
+    scenario && typeof scenario === "object" ? scenario.initialisation : null;
+  const title = language === "fr" ? exam.titleFr : exam.titleEn;
 
   if (!started) {
     return (
