@@ -189,6 +189,7 @@ async function loadFirstAvailableImage(urls: string[]) {
 export default function ChapterDetail() {
   const { t, language } = useTranslation();
   const [, navigate] = useLocation();
+  const utils = trpc.useUtils();
   const [chapterId, setChapterId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -204,13 +205,25 @@ export default function ChapterDetail() {
       { enabled: !!chapterId }
     );
 
+  const { data: chapters, isLoading: chaptersLoading } =
+    trpc.chapters.list.useQuery();
+
   const { data: commands, isLoading: commandsLoading } =
     trpc.commands.list.useQuery(
       { chapterId: chapterId! },
       { enabled: !!chapterId }
     );
 
-  if (!chapterId || chapterLoading || commandsLoading) {
+  const completeChapter = trpc.progress.completeChapter.useMutation({
+    onSuccess: async () => {
+      await Promise.all([
+        utils.progress.getStats.invalidate(),
+        utils.progress.getAllProgress.invalidate(),
+      ]);
+    },
+  });
+
+  if (!chapterId || chapterLoading || commandsLoading || chaptersLoading) {
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-48" />
@@ -248,6 +261,12 @@ export default function ChapterDetail() {
         chapter.contentFr ||
         chapter.descriptionEn ||
         chapter.descriptionFr;
+
+  const lastChapterNumber = chapters?.[chapters.length - 1]?.chapterNumber;
+  const isLastChapter =
+    lastChapterNumber != null
+      ? chapter.chapterNumber >= lastChapterNumber
+      : chapter.chapterNumber >= 12;
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
@@ -750,13 +769,21 @@ export default function ChapterDetail() {
         <Button
           variant="outline"
           onClick={() => {
-            if (chapter.chapterNumber < 12) {
-              navigate(`/chapters/${chapter.chapterNumber + 1}`);
+            if (isLastChapter) {
+              completeChapter.mutate({ chapterId: chapter.id });
+              navigate("/chapters");
+              return;
             }
+            navigate(`/chapters/${chapter.chapterNumber + 1}`);
           }}
-          disabled={chapter.chapterNumber === 12}
         >
-          {language === "fr" ? "Chapitre suivant →" : "Next Chapter →"}
+          {language === "fr"
+            ? isLastChapter
+              ? "Chapitre termine →"
+              : "Chapitre suivant →"
+            : isLastChapter
+              ? "Chapter complete →"
+              : "Next Chapter →"}
         </Button>
       </div>
     </div>
